@@ -32,7 +32,7 @@ public class ControlPanel extends JPanel{
 	
 	private Frame frame = null;
 	
-	private int MAX_COUNT_OF_BEETLES = 1024;
+	private int MAX_COUNT_OF_BEETLES = 256;
 	
 	private DataViewFrame dataViewFrame = new DataViewFrame();
 	
@@ -51,7 +51,7 @@ public class ControlPanel extends JPanel{
 	private JComboBox cmBoxLoop;
 	private JToggleButton tglbtnDebug;
 	
-	private int loopPlay = 1;
+	private int loopPlay = 0;
 	
 	/**
 	 * Create the panel.
@@ -220,7 +220,7 @@ public class ControlPanel extends JPanel{
 				
 				if(frame.getBeetleScreen() == null){
 					
-					loopPlay = 1;
+					loopPlay = 0;
 					
 					startRunning();
 					
@@ -363,12 +363,21 @@ public class ControlPanel extends JPanel{
 	}
 	
 	private void stopAndClearRunning(){
+		progressWhore.setValue(0);
 		frame.removeBettleScreen();
 		setControllersUseable(true);
 		tglbtnDebug.setForeground(Color.BLACK);
 		tglbtnDebug.setSelected(false);
 		lblLockBeetleNumber.setText("");
 		lblLockBeetleNumber.setForeground(Color.BLACK);
+	}
+	
+	private void setProgressFromBoard(){
+		
+		int maxCells = frame.getBeetleScreen().getMaxCells();
+		
+		progressCurrent.setMaximum(maxCells);
+		progressCurrent.setValue(maxCells - frame.getBeetleScreen().getNoVisitCellsCount());
 	}
 	
 	/**
@@ -381,6 +390,7 @@ public class ControlPanel extends JPanel{
 			public void run() {
 
 				while(true){
+					
 					if(frame.getBeetleScreen() != null){
 						
 						frame.hideMessageLabel();
@@ -388,6 +398,9 @@ public class ControlPanel extends JPanel{
 						
 						try{
 							if(frame.getBeetleScreen().isRunning()){
+								
+								setProgressFromBoard();
+								
 								if(frame.getBeetleScreen().isPause())
 									btnAction.setText("½ÇÇà");
 								else
@@ -398,13 +411,16 @@ public class ControlPanel extends JPanel{
 								if(frame.getBeetleScreen().isEnd()){
 									
 									int loopMax = Integer.valueOf((String)cmBoxLoop.getSelectedItem());
+									progressWhore.setMaximum(loopMax-1);
+									progressWhore.setValue(loopPlay);
 									
 									if( loopMax > 1)
 									{
-										if(loopPlay < loopMax){
+										if(loopPlay < loopMax-1){
 											stopAndClearRunning();
 											startRunning();
 											loopPlay++;
+											progressWhore.setValue(loopPlay);
 										}
 									}
 									

@@ -94,6 +94,9 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 		
 	}
 	
+	/**
+	 * 딱정벌레 보드 정보를 초기화한다.
+	 */
 	private void init()
 	{
 		_run = true;
@@ -547,6 +550,14 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 	
 	public int getDotSize() {
 		return DOT_SIZE;
+	}
+	
+	public int getMaxCells(){
+		return B_WIDTH * B_HEIGHT;
+	}
+	
+	public int getNoVisitCellsCount(){
+		return mapData.getNoVisitCell();
 	}
 
 	
