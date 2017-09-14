@@ -91,6 +91,7 @@ public class MapDraw {
 			
 		}catch (Exception e)
 		{
+			//TODO 170915 좌표 벗어나는 오류 원인 해결 필요
 			e.printStackTrace();
 			System.out.println(x + " " + y);
 			System.out.println(boardX + " " + boardY);
@@ -98,8 +99,7 @@ public class MapDraw {
 			System.exit(0);
 		}
 		return model[boardX][boardY];
-		
-		
+
 	}
 	
 	public MapModel[][] getMapModels(){

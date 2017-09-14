@@ -38,7 +38,7 @@ public class MapData {
 	 * @param y 좌표
 	 */
 	//TODO 좌표 값 -1 오류 발생, 충돌 연산 불량 추정 170910:114100
-	public void setThisCellVisit(int x, int y) {
+	public synchronized void setThisCellVisit(int x, int y) {
 		
 		try{
 			

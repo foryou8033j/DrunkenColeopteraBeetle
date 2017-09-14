@@ -34,7 +34,7 @@ public class MapModel {
 	 * @param y ÁÂÇ¥
 	 * @return {@link boolean}
 	 */
-	public boolean setThisCellVisit(int x, int y){
+	public synchronized boolean setThisCellVisit(int x, int y){
 		if(isThisCellVisit(x, y))
 			return false;
 		
