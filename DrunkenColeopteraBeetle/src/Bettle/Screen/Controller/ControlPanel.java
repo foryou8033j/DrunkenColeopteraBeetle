@@ -22,6 +22,11 @@ import Bettle.Screen.BeetleMovePanel;
 import Bettle.Screen.Frame;
 import Bettle.Screen.dataView.DataViewFrame;
 
+/**
+ * 사용자 조정 가능 컨트롤 패널 관리 클래스
+ * @author Jeongsam
+ *
+ */
 public class ControlPanel extends JPanel{
 
 	

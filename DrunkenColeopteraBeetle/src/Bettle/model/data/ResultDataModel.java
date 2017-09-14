@@ -6,7 +6,7 @@ package Bettle.model.data;
  * @author Jeongsam
  *
  */
-public class ResultModel {
+public class ResultDataModel {
 
 	private int width;
 	private int height;
@@ -23,7 +23,7 @@ public class ResultModel {
 	 * @param beetleCount {@link int}
 	 * @param delay {@link int}
 	 */
-	public ResultModel(int width, int height, String time, int beetleCount, int delay) {
+	public ResultDataModel(int width, int height, String time, int beetleCount, int delay) {
 		
 		this.width = width;
 		this.height = height;

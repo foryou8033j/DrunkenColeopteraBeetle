@@ -13,11 +13,16 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import Bettle.model.data.ResultData;
-import Bettle.model.data.ResultModel;
+import Bettle.model.data.ResultDataModel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
+/**
+ * 결과 데이터 출력 프레임 클래스
+ * @author Jeongsam
+ *
+ */
 public class DataViewFrame extends JFrame {
 
 	private JPanel contentPane;
@@ -82,7 +87,7 @@ public class DataViewFrame extends JFrame {
 		for(int i=0; i<length; i++){
 			
 			try{
-				ResultModel modelData = data.getData()[i];
+				ResultDataModel modelData = data.getData()[i];
 				Object objectData[] = {modelData.getWidth(), modelData.getHeight(), modelData.getTime(), modelData.getBeetleCount(), modelData.getDalay()};
 				
 				for(int j=0; j<5; j++)

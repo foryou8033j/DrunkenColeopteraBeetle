@@ -2,6 +2,11 @@ package Bettle.model.maps;
 
 import java.awt.Color;
 
+/**
+ * 분리 되어진 각 맵의 데이터 저장 클래스
+ * @author Jeongsam
+ *
+ */
 public class MapData {
 
 	//private boolean beetleVisitCell[][];

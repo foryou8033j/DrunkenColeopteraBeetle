@@ -2,6 +2,11 @@ package Bettle.model.maps;
 
 import javax.swing.JOptionPane;
 
+/**
+ * 맵을 크기별로 분리하고 관리하는 클래스
+ * @author Jeongsam
+ *
+ */
 public class MapDraw {
 	
 	private int DRAW_MAP_SIZE = 50;

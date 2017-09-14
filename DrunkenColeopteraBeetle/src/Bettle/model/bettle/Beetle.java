@@ -5,6 +5,7 @@ import java.util.Random;
 
 /**
  * 딱정벌레의 속성 및 움직임을 지정한다.
+ * @author Jeongsam
  */
 public class Beetle extends BeetleCordinate {
 	

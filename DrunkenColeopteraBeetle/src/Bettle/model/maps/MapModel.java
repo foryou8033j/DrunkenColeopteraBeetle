@@ -2,6 +2,11 @@ package Bettle.model.maps;
 
 import java.awt.Color;
 
+/**
+ * 맵의 세부 데이터 저장 클래스
+ * @author Jeongsam
+ *
+ */
 public class MapModel {
 
 	private int x;

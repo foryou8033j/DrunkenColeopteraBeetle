@@ -10,6 +10,11 @@ import javax.swing.UIManager;
 import Bettle.Screen.Controller.ControlPanel;
 import Bettle.model.data.ResultData;
 
+/**
+ * 술취한 딱정벌레 프레임 관리 클래스
+ * @author Jeongsam
+ *
+ */
 public class Frame extends JFrame {
 	
 	private BeetleMovePanel screen;

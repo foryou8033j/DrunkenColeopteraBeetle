@@ -27,6 +27,11 @@ import Bettle.model.maps.MapModel;
 enum DIRECTION {LEFT, RIGHT, UP, DOWN};
 
 
+/**
+ * 딱정벌레 이동 경로 표시 그래픽 클래스
+ * @author Jeongsam
+ *
+ */
 public class BeetleMovePanel extends JPanel implements ActionListener
 {
 
