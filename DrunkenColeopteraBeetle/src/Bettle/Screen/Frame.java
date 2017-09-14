@@ -26,7 +26,7 @@ public class Frame extends JFrame {
 	
 	public Frame() {
 		
-		setTitle("술취한 딱정벌레");
+		setTitle("술취한 딱정벌레 - 20140636 서정삼");
 		setVisible(true);
 		setResizable(false);
 		setMinimumSize(new Dimension(50*BeetleMovePanel.DOT_SIZE + 210, 560));
@@ -59,6 +59,10 @@ public class Frame extends JFrame {
 		messageLabel.setFont(new Font("", Font.BOLD, 20));
 		messageLabel.setBounds(getWidth() / 2, getHeight() / 2, 400, 30);
 		getContentPane().add(messageLabel);
+		
+		JLabel lblNewLabel = new JLabel("금오공과대학교 컴퓨터공학과 20140636 서정삼");
+		lblNewLabel.setBounds(181, 546, 511, 24);
+		getContentPane().add(lblNewLabel);
 		
 		setSize(new Dimension(50*BeetleMovePanel.DOT_SIZE + 210, 610));
 
@@ -118,5 +122,4 @@ public class Frame extends JFrame {
 	public ResultData getData(){
 		return data;
 	}
-
 }
