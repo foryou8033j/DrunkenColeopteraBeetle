@@ -32,10 +32,9 @@ public class ControlPanel extends JPanel{
 	
 	private Frame frame = null;
 	
-	private DataViewFrame dataViewFrame = new DataViewFrame();
+	private int MAX_COUNT_OF_BEETLES = 1024;
 	
-	private String[] beetlesName = {"³ë·©ÀÌ", "»¡°­ÀÌ", "°£Áö°ËÁ¤", "ÇÎÅ©ÇÎÅ©", "¾Æ¿À´«ºÎ¼Å½´¹ß", "¸¶Á¨Å¸°«",
-			"a","b","c","d","e","f","g","h","i","j","k","l","m","n", "o", "p", "q", "r", "s" ,"t", "u" ,"v", "w", "x" ,"y","z"};
+	private DataViewFrame dataViewFrame = new DataViewFrame();
 	
 	private JButton btnAction;
 	private JButton btnReset;
@@ -115,11 +114,9 @@ public class ControlPanel extends JPanel{
 		cmBoxBeetleCount = new JComboBox();
 		cmBoxBeetleCount.setToolTipText("\uB9F5\uC744 \uC21C\uD68C\uD558\uB294 \uB531\uC815\uBC8C\uB808\uC758 \uC218\uB97C \uACB0\uC815\uD569\uB2C8\uB2E4");
 		
-		int maxBeetleCount = 2048;
-		String[] maxBeetleCountArrayString = new String[maxBeetleCount];
-		for(int i=0; i<maxBeetleCount; i++) {
+		String[] maxBeetleCountArrayString = new String[MAX_COUNT_OF_BEETLES];
+		for(int i=0; i<MAX_COUNT_OF_BEETLES; i++) 
 			maxBeetleCountArrayString[i] = String.valueOf(i+1);
-		}
 		
 		cmBoxBeetleCount.setModel(new DefaultComboBoxModel(maxBeetleCountArrayString));
 		cmBoxBeetleCount.setBounds(84, 159, 69, 21);
