@@ -77,6 +77,10 @@ public class DataViewFrame extends JFrame {
 		
 	}
 	
+	/**
+	 * 테이블 데이터 동기화
+	 * @param data
+	 */
 	public void setDataTable(ResultData data){
 		
 		

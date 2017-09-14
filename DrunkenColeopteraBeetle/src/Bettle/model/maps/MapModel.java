@@ -28,6 +28,12 @@ public class MapModel {
 		
 	}
 	
+	/**
+	 * ÇöÀç ¼¿À» ¹æ¹® Ã³¸®ÇÑ´Ù.
+	 * @param x ÁÂÇ¥
+	 * @param y ÁÂÇ¥
+	 * @return {@link boolean}
+	 */
 	public boolean setThisCellVisit(int x, int y){
 		if(isThisCellVisit(x, y))
 			return false;
@@ -37,6 +43,12 @@ public class MapModel {
 		return true;
 	}
 	
+	/**
+	 * ÇöÀç ¼¿ÀÇ ¹æ¹® ¿©ºÎ¸¦ È®ÀÎÇÑ´Ù.
+	 * @param x ÁÂÇ¥
+	 * @param y ÁÂÇ¥
+	 * @return {@link boolean}
+	 */
 	public boolean isThisCellVisit(int x, int y){
 		
 		return visitCells[x - this.x][y - this.y];
