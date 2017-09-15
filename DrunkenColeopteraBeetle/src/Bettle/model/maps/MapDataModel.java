@@ -7,7 +7,7 @@ import java.awt.Color;
  * @author Jeongsam
  *
  */
-public class MapModel {
+public class MapDataModel {
 
 	private int x;
 	private int y;
@@ -16,7 +16,7 @@ public class MapModel {
 	
 	private boolean visitCells[][];
 	
-	public MapModel(int x, int y, int width, int height) {
+	public MapDataModel(int x, int y, int width, int height) {
 		
 		this.x = x;
 		this.y = y;

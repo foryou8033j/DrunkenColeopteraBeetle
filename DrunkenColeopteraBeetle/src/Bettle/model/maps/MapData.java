@@ -2,34 +2,31 @@ package Bettle.model.maps;
 
 import java.awt.Color;
 
+import javax.swing.JOptionPane;
+
 /**
  * 분리 되어진 각 맵의 데이터 저장 클래스
  * @author Jeongsam
  *
  */
 public class MapData {
-
-	//private boolean beetleVisitCell[][];
-	
-	//보드 크기 정보
-	private final int B_WIDTH;
-	private final int B_HEIGHT;
 	
 	private int countOfNoVisitCells;
 	
-	MapDraw mapDraw = null;
+	private MapDataModel models[][];
 	
-	public MapData(MapDraw mapDraw, int mapWidth, int mapHeight) {
+	private final int B_WIDTH;
+	private final int B_HEIGHT;
+	
+	public MapData(int mapWidth, int mapHeight) {
 		
-		this.B_WIDTH = mapWidth;
-		this.B_HEIGHT = mapHeight;
+		B_WIDTH = mapWidth;
+		B_HEIGHT = mapHeight;
 		
-		countOfNoVisitCells = mapWidth * mapHeight;
+		//방문 하지 않은 셀의 초기값을 설정한다.
+		countOfNoVisitCells = B_WIDTH * B_HEIGHT;
 		
-		
-		this.mapDraw = mapDraw;
-		
-		//beetleVisitCell = new boolean[B_WIDTH+1][B_HEIGHT+1];
+		this.models = new MapCompartmentDesigner().createMaps(mapWidth, mapHeight);
 	}
 	
 	/**
@@ -42,7 +39,7 @@ public class MapData {
 		
 		try{
 			
-			if(mapDraw.getThisMap(x, y).setThisCellVisit(x, y))
+			if(getThisMap(x, y).setThisCellVisit(x, y))
 				countOfNoVisitCells--;
 			
 			//beetleVisitCell[x][y] = true;
@@ -56,8 +53,11 @@ public class MapData {
 		
 	}
 	
+	/**
+	 * 방문하지 않은 셀의 갯수 값을 반환한다.
+	 * @return
+	 */
 	public int getNoVisitCell() {
-		
 		return countOfNoVisitCells;
 	}
 	
@@ -67,16 +67,59 @@ public class MapData {
 	 * @param y 좌표
 	 * @return {@link boolean}
 	 */
-	//TODO 많은 연산 소요, 수정 필요
 	public boolean isVisitCell(int x, int y) {
 		
 		try{
-			return mapDraw.getThisMap(x, y).isThisCellVisit(x, y);
+			return getThisMap(x, y).isThisCellVisit(x, y);
 		}catch (Exception e){
 			return false;
 		}
 		
 		
+	}
+	
+public MapDataModel getThisMap(int x, int y) {
+		
+		int boardX = 0;
+		int boardY = 0;
+		
+		try{
+			
+			//x 좌표 보정
+			if(x < 0)
+				x = 0;
+			if(x >= B_WIDTH)
+				x = B_WIDTH - 1;
+			
+			//y 좌표 보정
+			if(y < 0)
+				y = 0;
+			if(y >= B_HEIGHT)
+				y = B_HEIGHT - 1;
+			
+			//현재 좌표에 맞는 MapModel 을 찾는다.
+			if(x > MapCompartmentDesigner.DRAW_MAP_SIZE)
+				boardX = x / MapCompartmentDesigner.DRAW_MAP_SIZE;
+			if(y > MapCompartmentDesigner.DRAW_MAP_SIZE)
+				boardY = y / MapCompartmentDesigner.DRAW_MAP_SIZE;
+			
+			return models[boardX][boardY];
+			
+		}catch (Exception e)
+		{
+			//TODO 170915 좌표 벗어나는 오류 원인 해결 필요
+			e.printStackTrace();
+			System.out.println(x + " " + y);
+			System.out.println(boardX + " " + boardY);
+			JOptionPane.showConfirmDialog(null, "오류");
+			System.exit(0);
+		}
+		return models[boardX][boardY];
+
+	}
+	
+	public MapDataModel[][] getMapModels(){
+		return models;
 	}
 	
 }
