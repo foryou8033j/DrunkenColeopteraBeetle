@@ -11,7 +11,7 @@ import Bettle.Screen.Controller.ControlPanel;
 import Bettle.model.data.ResultData;
 
 /**
- * ¼úÃëÇÑ µüÁ¤¹ú·¹ ÇÁ·¹ÀÓ °ü¸® Å¬·¡½º
+ * ìˆ ì·¨í•œ ë”±ì •ë²Œë ˆ í”„ë ˆì„ ê´€ë¦¬ í´ë˜ìŠ¤
  * @author Jeongsam
  *
  */
@@ -26,33 +26,33 @@ public class Frame extends JFrame {
 	
 	public Frame() {
 		
-		setTitle("¼úÃëÇÑ µüÁ¤¹ú·¹ - 20140636 ¼­Á¤»ï");
+		setTitle("ìˆ ì·¨í•œ ë”±ì •ë²Œë ˆ - 20140636 ì„œì •ì‚¼");
 		setVisible(true);
 		setResizable(false);
 		setMinimumSize(new Dimension(50*BeetleMovePanel.DOT_SIZE + 210, 560));
 		
-		//JFrameÀ» Á¾·á ÇÒ ¶§ ÇÁ·Î¼¼¼­¿¡ ³²Áö ¾Ê°Ô Á¾·áÇÏµµ·Ï Áö½Ã
+		//JFrameì„ ì¢…ë£Œ í•  ë•Œ í”„ë¡œì„¸ì„œì— ë‚¨ì§€ ì•Šê²Œ ì¢…ë£Œí•˜ë„ë¡ ì§€ì‹œ
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		try {
-			//Metro È¯°æÀÌ³ª ÀÏºÎ Aero È¯°æ¿¡¼­ GUI°¡ ±úÁö´Â Çö»óÀ» ¹æÁöÇÏ±â À§ÇØ 
-			//¾Æ·¡ ¸í·É¾î »ç¿ë
+			//Metro í™˜ê²½ì´ë‚˜ ì¼ë¶€ Aero í™˜ê²½ì—ì„œ GUIê°€ ê¹¨ì§€ëŠ” í˜„ìƒì„ ë°©ì§€í•˜ê¸° ìœ„í•´ 
+			//ì•„ë˜ ëª…ë ¹ì–´ ì‚¬ìš©
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());	
 		}catch (Exception e) {
 			//ignore
 		}
 		
-		//µ¥ÀÌÅÍ ÀúÀå Å¬·¡½º¸¦ ÃÊ±âÈ­ÇÑ´Ù.
+		//ë°ì´í„° ì €ì¥ í´ë˜ìŠ¤ë¥¼ ì´ˆê¸°í™”í•œë‹¤.
 		data = new ResultData();
 		
-		//¿É¼Ç ¹× µ¥ÀÌÅÍ°¡ Ãâ·ÂµÉ ±¸¿ªÀÇ Panel À» ¼±¾ğÇÑ´Ù.
+		//ì˜µì…˜ ë° ë°ì´í„°ê°€ ì¶œë ¥ë  êµ¬ì—­ì˜ Panel ì„ ì„ ì–¸í•œë‹¤.
 		controller = new ControlPanel(this);
 		
 		
-		//AnchorPaneÀ» »ç¿ëÇÏ±âÀ§ÇØ Layout Á¦°Å
+		//AnchorPaneì„ ì‚¬ìš©í•˜ê¸°ìœ„í•´ Layout ì œê±°
 		getContentPane().setLayout(null);
 		
-		//·¹ÀÌ¾Æ¿ô ¼³Á¤
+		//ë ˆì´ì•„ì›ƒ ì„¤ì •
 		controller.setBounds(10, 10, 165, 560);
 		getContentPane().add(controller);
 		
@@ -60,7 +60,7 @@ public class Frame extends JFrame {
 		messageLabel.setBounds(getWidth() / 2, getHeight() / 2, 400, 30);
 		getContentPane().add(messageLabel);
 		
-		JLabel lblNewLabel = new JLabel("±İ¿À°ø°ú´ëÇĞ±³ ÄÄÇ»ÅÍ°øÇĞ°ú 20140636 ¼­Á¤»ï");
+		JLabel lblNewLabel = new JLabel("ê¸ˆì˜¤ê³µê³¼ëŒ€í•™êµ ì»´í“¨í„°ê³µí•™ê³¼ 20140636 ì„œì •ì‚¼");
 		lblNewLabel.setBounds(181, 546, 511, 24);
 		getContentPane().add(lblNewLabel);
 		
@@ -116,7 +116,7 @@ public class Frame extends JFrame {
 	
 	
 	/**
-	 * µ¥ÀÌÅÍ ÀúÀå °´Ã¼¸¦ ¹İÈ¯ÇÑ´Ù.
+	 * ë°ì´í„° ì €ì¥ ê°ì²´ë¥¼ ë°˜í™˜í•œë‹¤.
 	 * @return {@link ResultData}
 	 */
 	public ResultData getData(){

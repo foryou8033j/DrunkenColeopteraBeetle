@@ -3,7 +3,7 @@ package Bettle.model.maps;
 import java.awt.Color;
 
 /**
- * ºĞ¸® µÇ¾îÁø °¢ ¸ÊÀÇ µ¥ÀÌÅÍ ÀúÀå Å¬·¡½º
+ * ë¶„ë¦¬ ë˜ì–´ì§„ ê° ë§µì˜ ë°ì´í„° ì €ì¥ í´ë˜ìŠ¤
  * @author Jeongsam
  *
  */
@@ -11,7 +11,7 @@ public class MapData {
 
 	//private boolean beetleVisitCell[][];
 	
-	//º¸µå Å©±â Á¤º¸
+	//ë³´ë“œ í¬ê¸° ì •ë³´
 	private final int B_WIDTH;
 	private final int B_HEIGHT;
 	
@@ -33,11 +33,11 @@ public class MapData {
 	}
 	
 	/**
-	 * ÇØ´ç ¼¿ÀÇ ¹æ¹® ¿©ºÎ¸¦ <b>true</b> ·Î ¼öÁ¤ÇÑ´Ù.
-	 * @param x ÁÂÇ¥
-	 * @param y ÁÂÇ¥
+	 * í•´ë‹¹ ì…€ì˜ ë°©ë¬¸ ì—¬ë¶€ë¥¼ <b>true</b> ë¡œ ìˆ˜ì •í•œë‹¤.
+	 * @param x ì¢Œí‘œ
+	 * @param y ì¢Œí‘œ
 	 */
-	//TODO ÁÂÇ¥ °ª -1 ¿À·ù ¹ß»ı, Ãæµ¹ ¿¬»ê ºÒ·® ÃßÁ¤ 170910:114100
+	//TODO ì¢Œí‘œ ê°’ -1 ì˜¤ë¥˜ ë°œìƒ, ì¶©ëŒ ì—°ì‚° ë¶ˆëŸ‰ ì¶”ì • 170910:114100
 	public synchronized void setThisCellVisit(int x, int y) {
 		
 		try{
@@ -62,12 +62,12 @@ public class MapData {
 	}
 	
 	/**
-	 * ÇØ´ç ¼¿ÀÇ ¹æ¹® ¿©ºÎ¸¦ ¹İÈ¯ÇÑ´Ù.
-	 * @param x ÁÂÇ¥
-	 * @param y ÁÂÇ¥
+	 * í•´ë‹¹ ì…€ì˜ ë°©ë¬¸ ì—¬ë¶€ë¥¼ ë°˜í™˜í•œë‹¤.
+	 * @param x ì¢Œí‘œ
+	 * @param y ì¢Œí‘œ
 	 * @return {@link boolean}
 	 */
-	//TODO ¸¹Àº ¿¬»ê ¼Ò¿ä, ¼öÁ¤ ÇÊ¿ä
+	//TODO ë§ì€ ì—°ì‚° ì†Œìš”, ìˆ˜ì • í•„ìš”
 	public boolean isVisitCell(int x, int y) {
 		
 		try{

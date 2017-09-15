@@ -4,34 +4,34 @@ import java.awt.Color;
 import java.util.Random;
 
 /**
- * µüÁ¤¹ú·¹ÀÇ ¼Ó¼º ¹× ¿òÁ÷ÀÓÀ» ÁöÁ¤ÇÑ´Ù.
+ * ë”±ì •ë²Œë ˆì˜ ì†ì„± ë° ì›€ì§ì„ì„ ì§€ì •í•œë‹¤.
  * @author Jeongsam
  */
 public class Beetle extends BeetleCordinate {
 	
 	public enum Pos{UP, DOWN, LEFT, RIGHT};
 
-	//gui »ó¿¡ Ç¥Çö µÉ µüÁ¤¹ú·¹ÀÇ »ö»ó
+	//gui ìƒì— í‘œí˜„ ë  ë”±ì •ë²Œë ˆì˜ ìƒ‰ìƒ
 	private Color beetleColor;
 	
-	//¹æÇâ Áö½Ã
+	//ë°©í–¥ ì§€ì‹œ
 	private boolean upDirection;
 	private boolean downDirection;
 	private boolean leftDirection;
 	private boolean rightDirection;
 	
-	//¼¿ °ü·Ã
+	//ì…€ ê´€ë ¨
 	private int beetleMoveCount;
 	
-	//º¸µå Å©±â Á¤º¸
+	//ë³´ë“œ í¬ê¸° ì •ë³´
 	private final int B_WIDTH;
 	private final int B_HEIGHT;
 	
 	/**
-	 * µüÁ¤ ¹ú·¹ÀÇ ¼Ó¼ºÀ» ÃÊ±âÈ­ÇÑ´Ù.
-	 * @param color	GUI »ó¿¡ Ç¥Çö µÉ µüÁ¤¹ú·¹ÀÇ »ö»ó
-	 * @param mapWidth ¸ÊÀÇ °¡·Î Å©±â
-	 * @param mapHeight ¸ÊÀÇ ¼¼·Î Å©±â
+	 * ë”±ì • ë²Œë ˆì˜ ì†ì„±ì„ ì´ˆê¸°í™”í•œë‹¤.
+	 * @param color	GUI ìƒì— í‘œí˜„ ë  ë”±ì •ë²Œë ˆì˜ ìƒ‰ìƒ
+	 * @param mapWidth ë§µì˜ ê°€ë¡œ í¬ê¸°
+	 * @param mapHeight ë§µì˜ ì„¸ë¡œ í¬ê¸°
 	 */
 	public Beetle(Color color, int mapWidth, int mapHeight) {
 		
@@ -49,12 +49,12 @@ public class Beetle extends BeetleCordinate {
 		
 		beetleMoveCount = 0;
 		
-		//ÃÊ±â µüÁ¤¹ú·¹ÀÇ ¹æÇâÀ» ÁöÁ¤ÇÑ´Ù.
+		//ì´ˆê¸° ë”±ì •ë²Œë ˆì˜ ë°©í–¥ì„ ì§€ì •í•œë‹¤.
 		makeDirection();
 	}
 	
 	/**
-	 * µüÁ¤¹ú·¹ÀÇ »ö»óÀ» ¹İÈ¯ÇÑ´Ù.
+	 * ë”±ì •ë²Œë ˆì˜ ìƒ‰ìƒì„ ë°˜í™˜í•œë‹¤.
 	 * @return {@link Color}
 	 */
 	public Color getBeetleColor() {
@@ -64,14 +64,14 @@ public class Beetle extends BeetleCordinate {
 	
 	
 	/**
-	 * ¹æ¹® È½¼ö Ä«¿îÆ®¸¦ Áõ°¡½ÃÅ²´Ù.
+	 * ë°©ë¬¸ íšŸìˆ˜ ì¹´ìš´íŠ¸ë¥¼ ì¦ê°€ì‹œí‚¨ë‹¤.
 	 */
 	public void addMoveCount() {
 		beetleMoveCount++;
 	}
 	
 	/**
-	 * ¹æ¹® È½¼ö Ä«¿îÆ®¸¦ ¹İÈ¯¹Ş´Â´Ù.
+	 * ë°©ë¬¸ íšŸìˆ˜ ì¹´ìš´íŠ¸ë¥¼ ë°˜í™˜ë°›ëŠ”ë‹¤.
 	 * @return {@link int}
 	 */
 	public int getMoveCount() {
@@ -79,11 +79,11 @@ public class Beetle extends BeetleCordinate {
 	}
 	
 	/**
-	 * µüÁ¤¹ú·¹°¡ ¿òÁ÷ÀÏ ¹æÇâÀ» ·£´ıÇÏ°Ô ÁöÁ¤ÇÑ´Ù.
+	 * ë”±ì •ë²Œë ˆê°€ ì›€ì§ì¼ ë°©í–¥ì„ ëœë¤í•˜ê²Œ ì§€ì •í•œë‹¤.
 	 */
 	public void makeDirection() {
 		
-		//¿©±â¿¡ ·£´ı ¾Ë°í¸®ÁòÀÌ Àû¿ë µÇ¾î¾ßÇÑ´Ù.
+		//ì—¬ê¸°ì— ëœë¤ ì•Œê³ ë¦¬ì¦˜ì´ ì ìš© ë˜ì–´ì•¼í•œë‹¤.
 		int randNum = new Random().nextInt(8);
 		
 		switch(randNum) {
@@ -139,8 +139,8 @@ public class Beetle extends BeetleCordinate {
 	}
 	
 	/**
-	 * °­Á¦ÀûÀ¸·Î ÀÌµ¿ÇÒ ¹æÇâ°ú ÇÔ²² ¹«ÀÛÀ§ ¹æÇâÀ» ÁöÁ¤ÇÑ´Ù.
-	 * @param pos °­Á¦·Î ÀÌµ¿ÇÒ ¹æÇâ
+	 * ê°•ì œì ìœ¼ë¡œ ì´ë™í•  ë°©í–¥ê³¼ í•¨ê»˜ ë¬´ì‘ìœ„ ë°©í–¥ì„ ì§€ì •í•œë‹¤.
+	 * @param pos ê°•ì œë¡œ ì´ë™í•  ë°©í–¥
 	 */
 	public void makeDirection(Pos pos) {
 		
@@ -171,7 +171,7 @@ public class Beetle extends BeetleCordinate {
 	
 	
 	/**
-	 * ¿òÁ÷ÀÏ ·£´ı ¹æÇâÀ» ¹İÈ¯ÇÑ´Ù.
+	 * ì›€ì§ì¼ ëœë¤ ë°©í–¥ì„ ë°˜í™˜í•œë‹¤.
 	 * @return {@link boolean[]<br><br>}
 	 * {@code boolean[] = {upDirectiom, downDirection, leftDirection, rightDirection }
 	 */

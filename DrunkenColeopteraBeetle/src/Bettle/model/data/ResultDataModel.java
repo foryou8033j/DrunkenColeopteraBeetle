@@ -2,7 +2,7 @@ package Bettle.model.data;
 
 
 /**
- * °á°ú µ¥ÀÌÅÍ ÀúÀå ¸ğµ¨ Å¬·¡½ºÀÌ´Ù.
+ * ê²°ê³¼ ë°ì´í„° ì €ì¥ ëª¨ë¸ í´ë˜ìŠ¤ì´ë‹¤.
  * @author Jeongsam
  *
  */
@@ -18,7 +18,7 @@ public class ResultDataModel {
 	
 	
 	/**
-	 * °á°ú µ¥ÀÌÅÍ Á¤º¸¸¦ ÀúÀåÇÑ´Ù.
+	 * ê²°ê³¼ ë°ì´í„° ì •ë³´ë¥¼ ì €ì¥í•œë‹¤.
 	 * @param time {@link long}
 	 * @param beetleCount {@link int}
 	 * @param delay {@link int}

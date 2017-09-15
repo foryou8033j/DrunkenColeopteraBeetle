@@ -3,25 +3,25 @@ package Bettle.model.bettle;
 import java.util.Random;
 
 /**
- * µüÁ¤¹ú·¹ÀÇ ÁÂÇ¥ Á¤º¸¸¦ °ü¸®ÇÑ´Ù.
+ * ë”±ì •ë²Œë ˆì˜ ì¢Œí‘œ ì •ë³´ë¥¼ ê´€ë¦¬í•œë‹¤.
  * @author Jeongsam
  *
  */
 public class BeetleCordinate{
 
-	//µüÁ¤¹ú·¹ÀÇ ÁÂÇ¥
+	//ë”±ì •ë²Œë ˆì˜ ì¢Œí‘œ
 	private int x;
 	private int y;
 	
 	
 	/**
-	 * µüÁ¤¹ú·¹ÀÇ ÁÂÇ¥ Á¤º¸¸¦ ÃÊ±âÈ­ÇÑ´Ù.
+	 * ë”±ì •ë²Œë ˆì˜ ì¢Œí‘œ ì •ë³´ë¥¼ ì´ˆê¸°í™”í•œë‹¤.
 	 * @param width {@link int}
 	 * @param height {@link int}
 	 */
 	public BeetleCordinate(int width, int height) {
 		
-		//µüÁ¤¹ú·¹ÀÇ ÃÊ±â ÁÂÇ¥¸¦ ·£´ıÇÏ°Ô ÁöÁ¤ÇÑ´Ù.
+		//ë”±ì •ë²Œë ˆì˜ ì´ˆê¸° ì¢Œí‘œë¥¼ ëœë¤í•˜ê²Œ ì§€ì •í•œë‹¤.
 		x = new Random().nextInt(width);
 		y = new Random().nextInt(height);
 	}
@@ -50,25 +50,25 @@ public class BeetleCordinate{
 	}
 	
 	/**
-	 * µüÁ¤¹ú·¹ÀÇ XÁÂÇ¥¸¦ ÁöÁ¤ÇÑ´Ù.
-	 * @param x ÁÂÇ¥
+	 * ë”±ì •ë²Œë ˆì˜ Xì¢Œí‘œë¥¼ ì§€ì •í•œë‹¤.
+	 * @param x ì¢Œí‘œ
 	 */
 	public void setX(int x) {
 		this.x = x;
 	}
 	
 	/**
-	 * µüÁ¤¹ú·¹ÀÇ YÁÂÇ¥¸¦ ÁöÁ¤ÇÑ´Ù.
-	 * @param y ÁÂÇ¥
+	 * ë”±ì •ë²Œë ˆì˜ Yì¢Œí‘œë¥¼ ì§€ì •í•œë‹¤.
+	 * @param y ì¢Œí‘œ
 	 */
 	public void setY(int y) {
 		this.y = y;
 	}
 	
 	/**
-	 * µüÁ¤¹ú·¹ÀÇ ÁÂÇ¥¸¦ ÁöÁ¤ÇÑ´Ù.
-	 * @param x ÁÂÇ¥
-	 * @param y ÁÂÇ¥
+	 * ë”±ì •ë²Œë ˆì˜ ì¢Œí‘œë¥¼ ì§€ì •í•œë‹¤.
+	 * @param x ì¢Œí‘œ
+	 * @param y ì¢Œí‘œ
 	 */
 	public void setCordinate(int x, int y) {
 		this.x = x;
@@ -76,7 +76,7 @@ public class BeetleCordinate{
 	}
 	
 	/**
-	 * µüÁ¤¹ú·¹ÀÇ X ÁÂÇ¥¸¦ ¹İÈ¯ÇÑ´Ù.
+	 * ë”±ì •ë²Œë ˆì˜ X ì¢Œí‘œë¥¼ ë°˜í™˜í•œë‹¤.
 	 * @return {@link int}
 	 */
 	public int getX() {
@@ -84,7 +84,7 @@ public class BeetleCordinate{
 	}
 	
 	/**
-	 * µüÁ¤¹ú·¹ÀÇ Y ÁÂÇ¥¸¦ ¹İÈ¯ÇÑ´Ù.
+	 * ë”±ì •ë²Œë ˆì˜ Y ì¢Œí‘œë¥¼ ë°˜í™˜í•œë‹¤.
 	 * @return ({@link int}
 	 */
 	public int getY() {

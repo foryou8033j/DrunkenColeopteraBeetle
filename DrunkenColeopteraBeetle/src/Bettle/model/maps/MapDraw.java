@@ -3,7 +3,7 @@ package Bettle.model.maps;
 import javax.swing.JOptionPane;
 
 /**
- * ¸ÊÀ» Å©±âº°·Î ºĞ¸®ÇÏ°í °ü¸®ÇÏ´Â Å¬·¡½º
+ * ë§µì„ í¬ê¸°ë³„ë¡œ ë¶„ë¦¬í•˜ê³  ê´€ë¦¬í•˜ëŠ” í´ë˜ìŠ¤
  * @author Jeongsam
  *
  */
@@ -27,15 +27,15 @@ public class MapDraw {
 	
 	private void createMaps() {
 
-		//ÀüÃ¼ Å©±â¸¦ ±Ô°İº°·Î ³ª´«´Ù
+		//ì „ì²´ í¬ê¸°ë¥¼ ê·œê²©ë³„ë¡œ ë‚˜ëˆˆë‹¤
 		int countX = B_WIDTH / DRAW_MAP_SIZE;
 		int countY = B_HEIGHT / DRAW_MAP_SIZE;
 
-		//±Ô°İº°·Î ÀÚ¸¥ ÈÄ ³²´Â Å©±â¸¦ ÀúÀåÇÑ´Ù.
+		//ê·œê²©ë³„ë¡œ ìë¥¸ í›„ ë‚¨ëŠ” í¬ê¸°ë¥¼ ì €ì¥í•œë‹¤.
 		int leastWidth = B_WIDTH % DRAW_MAP_SIZE;
 		int leastHeight = B_HEIGHT % DRAW_MAP_SIZE;
 		
-		//³²´Â Å©±â°¡ ÀÖÀ» °æ¿ì µû·Î ÀúÀåÇÑ´Ù.
+		//ë‚¨ëŠ” í¬ê¸°ê°€ ìˆì„ ê²½ìš° ë”°ë¡œ ì €ì¥í•œë‹¤.
 		if(leastWidth > 0 || leastHeight > 0) {
 			countX++;
 			countY++;
@@ -69,19 +69,19 @@ public class MapDraw {
 		
 		try{
 			
-			//x ÁÂÇ¥ º¸Á¤
+			//x ì¢Œí‘œ ë³´ì •
 			if(x < 0)
 				x = 0;
 			if(x >= B_WIDTH)
 				x = B_WIDTH - 1;
 			
-			//y ÁÂÇ¥ º¸Á¤
+			//y ì¢Œí‘œ ë³´ì •
 			if(y < 0)
 				y = 0;
 			if(y >= B_HEIGHT)
 				y = B_HEIGHT - 1;
 			
-			//ÇöÀç ÁÂÇ¥¿¡ ¸Â´Â MapModel À» Ã£´Â´Ù.
+			//í˜„ì¬ ì¢Œí‘œì— ë§ëŠ” MapModel ì„ ì°¾ëŠ”ë‹¤.
 			if(x > DRAW_MAP_SIZE)
 				boardX = x / DRAW_MAP_SIZE;
 			if(y > DRAW_MAP_SIZE)
@@ -91,11 +91,11 @@ public class MapDraw {
 			
 		}catch (Exception e)
 		{
-			//TODO 170915 ÁÂÇ¥ ¹ş¾î³ª´Â ¿À·ù ¿øÀÎ ÇØ°á ÇÊ¿ä
+			//TODO 170915 ì¢Œí‘œ ë²—ì–´ë‚˜ëŠ” ì˜¤ë¥˜ ì›ì¸ í•´ê²° í•„ìš”
 			e.printStackTrace();
 			System.out.println(x + " " + y);
 			System.out.println(boardX + " " + boardY);
-			JOptionPane.showConfirmDialog(null, "¿À·ù");
+			JOptionPane.showConfirmDialog(null, "ì˜¤ë¥˜");
 			System.exit(0);
 		}
 		return model[boardX][boardY];
