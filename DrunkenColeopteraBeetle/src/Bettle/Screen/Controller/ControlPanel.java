@@ -32,7 +32,7 @@ public class ControlPanel extends JPanel{
 	
 	private Frame frame = null;
 	
-	private int MAX_COUNT_OF_BEETLES = 256;
+	private int MAX_COUNT_OF_BEETLES = 1024;
 	
 	private DataViewFrame dataViewFrame = new DataViewFrame();
 	
@@ -75,7 +75,7 @@ public class ControlPanel extends JPanel{
 		add(lblWidth);
 		
 		cmBoxWidth = new JComboBox();
-		cmBoxWidth.setModel(new DefaultComboBoxModel(new String[] {"20", "30", "50", "100", "200", "300", "500", "1000", "10000", "100000", "1000000", "10000000", "100000000", "1000000000", "10000000000"}));
+		cmBoxWidth.setModel(new DefaultComboBoxModel(new String[] {"20", "30", "50", "100", "200", "300", "500", "1000", "10000", "100000"}));
 		cmBoxWidth.setBounds(84, 35, 69, 21);
 		add(cmBoxWidth);
 		
@@ -84,7 +84,7 @@ public class ControlPanel extends JPanel{
 		add(lblHeight);
 		
 		cmBoxHeight = new JComboBox();
-		cmBoxHeight.setModel(new DefaultComboBoxModel(new String[] {"20", "30", "50", "100", "200", "300", "500", "1000", "10000", "100000", "1000000", "10000000", "100000000", "1000000000", "10000000000"}));
+		cmBoxHeight.setModel(new DefaultComboBoxModel(new String[] {"20", "30", "50", "100", "200", "300", "500", "1000", "10000", "100000"}));
 		cmBoxHeight.setBounds(84, 63, 69, 21);
 		add(cmBoxHeight);
 		

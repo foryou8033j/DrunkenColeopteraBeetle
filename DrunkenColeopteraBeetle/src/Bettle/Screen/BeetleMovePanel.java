@@ -20,8 +20,8 @@ import javax.swing.Timer;
 import Bettle.model.bettle.Beetle;
 import Bettle.model.bettle.Beetle.Pos;
 import Bettle.model.maps.MapData;
-import Bettle.model.maps.MapDraw;
-import Bettle.model.maps.MapModel;
+import Bettle.model.maps.MapCompartmentDesigner;
+import Bettle.model.maps.MapDataModel;
 
 
 enum DIRECTION {LEFT, RIGHT, UP, DOWN};
@@ -58,7 +58,6 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 	private int beetleCount = 0;
 	
 	private Beetle beetles[] = null;
-	private MapDraw map = null;
 	private MapData mapData = null;
 	
 	private boolean _run = true;
@@ -118,8 +117,7 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 			beetles[i] = new Beetle(CLR_HEAD[i], B_WIDTH, B_HEIGHT);
 		}
 		
-		map = new MapDraw(B_WIDTH, B_HEIGHT);
-		mapData = new MapData(map, B_WIDTH, B_HEIGHT);
+		mapData = new MapData(B_WIDTH, B_HEIGHT);
 		
 		startTime = Calendar.getInstance().getTimeInMillis();
 		
@@ -155,7 +153,7 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 		//배경 그리기
 		try{
 			
-			MapModel mapModel = map.getThisMap(beetles[beetleLock].getX(), beetles[beetleLock].getY());
+			MapDataModel mapModel = mapData.getThisMap(beetles[beetleLock].getX(), beetles[beetleLock].getY());
 			
 			int tmpDrawWidth = mapModel.getwidth();
 			int tmpDrawHeight = mapModel.getHeight();
@@ -194,7 +192,7 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 			FontMetrics metr = getFontMetrics(asd);
 			g.setFont(asd);
 			
-			final MapModel mapModel = map.getThisMap(beetles[beetleLock].getX(), beetles[beetleLock].getY());
+			final MapDataModel mapModel = mapData.getThisMap(beetles[beetleLock].getX(), beetles[beetleLock].getY());
 			
 			//if()
 			
@@ -295,7 +293,7 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 		Graphics2D g2=(Graphics2D)g;
 		g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.6f));
 		
-		MapModel mapModel = map.getThisMap(beetles[beetleLock].getX(), beetles[beetleLock].getY());	
+		MapDataModel mapModel = mapData.getThisMap(beetles[beetleLock].getX(), beetles[beetleLock].getY());	
 		
 		
 		

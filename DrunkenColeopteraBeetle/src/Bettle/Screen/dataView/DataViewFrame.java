@@ -17,6 +17,8 @@ import Bettle.model.data.ResultDataModel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 /**
  * 결과 데이터 출력 프레임 클래스
@@ -34,6 +36,7 @@ public class DataViewFrame extends JFrame {
 	private JPanel panel_1;
 	private JScrollPane scrollPane;
 	private JTable table;
+	private JButton btnNewButton;
 
 
 	/**
@@ -62,6 +65,17 @@ public class DataViewFrame extends JFrame {
 		btnShowGraph = new JButton("\uADF8\uB798\uD504 \uBCF4\uAE30");
 		btnShowGraph.setFont(new Font("굴림", Font.BOLD, 14));
 		panel.add(btnShowGraph);
+		
+		btnNewButton = new JButton("데이터 초기화");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				
+				
+			}
+		});
+		btnNewButton.setFont(new Font("굴림", Font.BOLD, 14));
+		panel.add(btnNewButton);
 		
 		panel_1 = new JPanel();
 		contentPane.add(panel_1, BorderLayout.NORTH);
