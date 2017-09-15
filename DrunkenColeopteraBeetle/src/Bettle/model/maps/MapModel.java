@@ -34,11 +34,15 @@ public class MapModel {
 	 * @param y 좌표
 	 * @return {@link boolean}
 	 */
-	public synchronized boolean setThisCellVisit(int x, int y){
+	public boolean setThisCellVisit(int x, int y){
+		
 		if(isThisCellVisit(x, y))
 			return false;
 		
-		visitCells[x - this.x][y - this.y] = true;
+		//여러 딱정이가 한번에 접근하여 카운트를 수정하지 못하도록 동기화한다.
+		synchronized (visitCells) {
+			visitCells[x - this.x][y - this.y] = true;
+		}
 		
 		return true;
 	}

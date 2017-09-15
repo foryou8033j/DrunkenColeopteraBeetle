@@ -253,6 +253,12 @@ public class ControlPanel extends JPanel{
 		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				stopAndClearRunning();
+				
+				progressWhore.setMaximum(100);
+				progressCurrent.setMaximum(100);
+				progressWhore.setValue(0);
+				progressCurrent.setValue(0);
+				
 			}
 		});
 		btnReset.setFont(new Font("굴림", Font.BOLD, 14));
@@ -336,7 +342,7 @@ public class ControlPanel extends JPanel{
 			@Override
 			public void run() {
 				while(true){
-					dataViewFrame.setLocation(frame.getX() + frame.getWidth() - 10, frame.getY());
+					dataViewFrame.setBounds(frame.getX() + frame.getWidth(), frame.getY(), 460, 416);
 					
 					if(dataViewFrame.isVisible())
 						btnShowDataFrame.setEnabled(false);
@@ -363,7 +369,6 @@ public class ControlPanel extends JPanel{
 	}
 	
 	private void stopAndClearRunning(){
-		progressWhore.setValue(0);
 		frame.removeBettleScreen();
 		setControllersUseable(true);
 		tglbtnDebug.setForeground(Color.BLACK);
@@ -401,6 +406,7 @@ public class ControlPanel extends JPanel{
 								
 								setProgressFromBoard();
 								
+								
 								if(frame.getBeetleScreen().isPause())
 									btnAction.setText("실행");
 								else
@@ -411,17 +417,18 @@ public class ControlPanel extends JPanel{
 								if(frame.getBeetleScreen().isEnd()){
 									
 									int loopMax = Integer.valueOf((String)cmBoxLoop.getSelectedItem());
-									progressWhore.setMaximum(loopMax-1);
+									progressWhore.setMaximum(loopMax);
 									progressWhore.setValue(loopPlay);
 									
-									if( loopMax > 1)
+									if( loopMax >= 1)
 									{
 										if(loopPlay < loopMax-1){
 											stopAndClearRunning();
 											startRunning();
-											loopPlay++;
-											progressWhore.setValue(loopPlay);
 										}
+										loopPlay++;
+										progressWhore.setValue(loopPlay);
+										
 									}
 									
 									btnAction.setEnabled(false);
