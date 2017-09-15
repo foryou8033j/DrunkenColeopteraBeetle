@@ -3,7 +3,7 @@ package Bettle.model.maps;
 import java.awt.Color;
 
 /**
- * ¸ÊÀÇ ¼¼ºÎ µ¥ÀÌÅÍ ÀúÀå Å¬·¡½º
+ * ë§µì˜ ì„¸ë¶€ ë°ì´í„° ì €ì¥ í´ë˜ìŠ¤
  * @author Jeongsam
  *
  */
@@ -29,9 +29,9 @@ public class MapModel {
 	}
 	
 	/**
-	 * ÇöÀç ¼¿À» ¹æ¹® Ã³¸®ÇÑ´Ù.
-	 * @param x ÁÂÇ¥
-	 * @param y ÁÂÇ¥
+	 * í˜„ì¬ ì…€ì„ ë°©ë¬¸ ì²˜ë¦¬í•œë‹¤.
+	 * @param x ì¢Œí‘œ
+	 * @param y ì¢Œí‘œ
 	 * @return {@link boolean}
 	 */
 	public synchronized boolean setThisCellVisit(int x, int y){
@@ -44,9 +44,9 @@ public class MapModel {
 	}
 	
 	/**
-	 * ÇöÀç ¼¿ÀÇ ¹æ¹® ¿©ºÎ¸¦ È®ÀÎÇÑ´Ù.
-	 * @param x ÁÂÇ¥
-	 * @param y ÁÂÇ¥
+	 * í˜„ì¬ ì…€ì˜ ë°©ë¬¸ ì—¬ë¶€ë¥¼ í™•ì¸í•œë‹¤.
+	 * @param x ì¢Œí‘œ
+	 * @param y ì¢Œí‘œ
 	 * @return {@link boolean}
 	 */
 	public boolean isThisCellVisit(int x, int y){
@@ -56,7 +56,7 @@ public class MapModel {
 	}
 	
 	/**
-	 * Ãâ·ÂÀÌ ½ÃÀÛ µÉ X ÁÂÇ¥
+	 * ì¶œë ¥ì´ ì‹œì‘ ë  X ì¢Œí‘œ
 	 * @return
 	 */
 	public int getX() {
@@ -64,7 +64,7 @@ public class MapModel {
 	}
 	
 	/**
-	 * Ãâ·ÂÀÌ ½ÃÀÛ µÉ Y ÁÂÇ¥
+	 * ì¶œë ¥ì´ ì‹œì‘ ë  Y ì¢Œí‘œ
 	 * @return
 	 */
 	public int getY() {
@@ -72,7 +72,7 @@ public class MapModel {
 	}
 	
 	/**
-	 * °¡·Î Å©±â¸¦ ¹İÈ¯ÇÑ´Ù.
+	 * ê°€ë¡œ í¬ê¸°ë¥¼ ë°˜í™˜í•œë‹¤.
 	 * @return {@link int}
 	 */
 	public int getwidth() {
@@ -80,7 +80,7 @@ public class MapModel {
 	}
 	
 	/**
-	 * ¼¼·Î Å©±â¸¦ ¹İÈ¯ÇÑ´Ù.
+	 * ì„¸ë¡œ í¬ê¸°ë¥¼ ë°˜í™˜í•œë‹¤.
 	 * @return {@link int}
 	 */
 	public int getHeight() {

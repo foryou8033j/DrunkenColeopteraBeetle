@@ -5,7 +5,7 @@ import javax.swing.SwingUtilities;
 import Bettle.Screen.Frame;
 
 /**
- * µüÁ¤¹ú·¹ ½Ã¹Ä·¹ÀÌ¼ÇÀ» ½ÃÀÛÇÏ´Â Main Å¬·¹½º
+ * ë”±ì •ë²Œë ˆ ì‹œë®¬ë ˆì´ì…˜ì„ ì‹œì‘í•˜ëŠ” Main í´ë ˆìŠ¤
  * @author Jeongsam
  *
  */

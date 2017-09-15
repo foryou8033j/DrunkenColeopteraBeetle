@@ -23,7 +23,7 @@ import Bettle.Screen.Frame;
 import Bettle.Screen.dataView.DataViewFrame;
 
 /**
- * »ç¿ëÀÚ Á¶Á¤ °¡´É ÄÁÆ®·Ñ ÆÐ³Î °ü¸® Å¬·¡½º
+ * ì‚¬ìš©ìž ì¡°ì • ê°€ëŠ¥ ì»¨íŠ¸ë¡¤ íŒ¨ë„ ê´€ë¦¬ í´ëž˜ìŠ¤
  * @author Jeongsam
  *
  */
@@ -61,8 +61,8 @@ public class ControlPanel extends JPanel{
 		this.frame = beetleFrame;
 		setLayout(null);
 		
-		JLabel lblMapConf = new JLabel("¸Ê ¼³Á¤");
-		lblMapConf.setFont(new Font("±¼¸²", Font.BOLD, 13));
+		JLabel lblMapConf = new JLabel("ë§µ ì„¤ì •");
+		lblMapConf.setFont(new Font("êµ´ë¦¼", Font.BOLD, 13));
 		lblMapConf.setBounds(12, 10, 176, 15);
 		add(lblMapConf);
 		
@@ -70,7 +70,7 @@ public class ControlPanel extends JPanel{
 		separator_1.setBounds(12, 28, 141, 15);
 		add(separator_1);
 		
-		JLabel lblWidth = new JLabel("°¡·Î");
+		JLabel lblWidth = new JLabel("ê°€ë¡œ");
 		lblWidth.setBounds(22, 38, 31, 15);
 		add(lblWidth);
 		
@@ -98,7 +98,7 @@ public class ControlPanel extends JPanel{
 		add(cmBoxLoop);
 		
 		JLabel lblBeetleConf = new JLabel("\uB531\uC815\uBC8C\uB808 \uC124\uC815");
-		lblBeetleConf.setFont(new Font("±¼¸²", Font.BOLD, 13));
+		lblBeetleConf.setFont(new Font("êµ´ë¦¼", Font.BOLD, 13));
 		lblBeetleConf.setBounds(12, 134, 176, 15);
 		add(lblBeetleConf);
 		
@@ -139,12 +139,12 @@ public class ControlPanel extends JPanel{
 		
 		JLabel lblLookBeetleTitle = new JLabel("\uD604\uC7AC \uC9C0\uCF1C\uBCF4\uB294 \uB531\uC815\uC774");
 		lblLookBeetleTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		lblLookBeetleTitle.setFont(new Font("±¼¸²", Font.BOLD, 13));
+		lblLookBeetleTitle.setFont(new Font("êµ´ë¦¼", Font.BOLD, 13));
 		lblLookBeetleTitle.setBounds(12, 237, 141, 15);
 		add(lblLookBeetleTitle);
 		
 		lblLockBeetleNumber = new JLabel("");
-		lblLockBeetleNumber.setFont(new Font("±¼¸²", Font.BOLD, 13));
+		lblLockBeetleNumber.setFont(new Font("êµ´ë¦¼", Font.BOLD, 13));
 		lblLockBeetleNumber.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLockBeetleNumber.setBounds(12, 262, 141, 15);
 		lblLockBeetleNumber.setBackground(BeetleMovePanel.CLR_BACKGROUND);
@@ -162,12 +162,12 @@ public class ControlPanel extends JPanel{
 				else
 					frame.getBeetleScreen().setBeetleLookView(currentViewBeetle-1);
 					
-				lblLockBeetleNumber.setText("¡á");
+				lblLockBeetleNumber.setText("â– ");
 				lblLockBeetleNumber.setForeground(frame.getBeetleScreen().getCurrentViewBeetleColor());
 				
 			}
 		});
-		btnBeetlePre.setFont(new Font("±¼¸²", Font.BOLD, 14));
+		btnBeetlePre.setFont(new Font("êµ´ë¦¼", Font.BOLD, 14));
 		btnBeetlePre.setBounds(29, 287, 50, 50);
 		add(btnBeetlePre);
 		
@@ -183,12 +183,12 @@ public class ControlPanel extends JPanel{
 				else
 					frame.getBeetleScreen().setBeetleLookView(currentViewBeetle+1);
 				
-				lblLockBeetleNumber.setText("¡á");
+				lblLockBeetleNumber.setText("â– ");
 				lblLockBeetleNumber.setForeground(frame.getBeetleScreen().getCurrentViewBeetleColor());
 					
 			}
 		});
-		btnBeetleNext.setFont(new Font("±¼¸²", Font.BOLD, 14));
+		btnBeetleNext.setFont(new Font("êµ´ë¦¼", Font.BOLD, 14));
 		btnBeetleNext.setBounds(84, 287, 50, 50);
 		add(btnBeetleNext);
 		
@@ -245,7 +245,7 @@ public class ControlPanel extends JPanel{
 				
 			}
 		});
-		btnAction.setFont(new Font("±¼¸²", Font.BOLD, 14));
+		btnAction.setFont(new Font("êµ´ë¦¼", Font.BOLD, 14));
 		btnAction.setBounds(12, 448, 141, 25);
 		add(btnAction);
 		
@@ -255,7 +255,7 @@ public class ControlPanel extends JPanel{
 				stopAndClearRunning();
 			}
 		});
-		btnReset.setFont(new Font("±¼¸²", Font.BOLD, 14));
+		btnReset.setFont(new Font("êµ´ë¦¼", Font.BOLD, 14));
 		btnReset.setBounds(12, 476, 141, 25);
 		add(btnReset);
 		
@@ -271,7 +271,7 @@ public class ControlPanel extends JPanel{
 				
 			}
 		});
-		btnShowDataFrame.setFont(new Font("±¼¸²", Font.BOLD, 14));
+		btnShowDataFrame.setFont(new Font("êµ´ë¦¼", Font.BOLD, 14));
 		btnShowDataFrame.setBounds(12, 504, 141, 42);
 		add(btnShowDataFrame);
 		
@@ -312,13 +312,13 @@ public class ControlPanel extends JPanel{
 		
 		syncWithData();
 		
-		//µ¥ÀÌÅÍ ºä ÇÁ·¹ÀÓÀÇ À§Ä¡¸¦ ¸ÞÀÎ ÇÁ·¹ÀÓ°ú ¿¬µ¿ÇÑ´Ù.
+		//ë°ì´í„° ë·° í”„ë ˆìž„ì˜ ìœ„ì¹˜ë¥¼ ë©”ì¸ í”„ë ˆìž„ê³¼ ì—°ë™í•œë‹¤.
 		 dataViewFrameLocationChangeListener();
 		
 	}
 	
 	public void syncWithData(){
-		//µ¥ÀÌÅÍ ºä ÇÁ·¹ÀÓ°ú °á°ú µ¥ÀÌÅÍ Á¤º¸¸¦ ¿¬µ¿ÇÑ´Ù.
+		//ë°ì´í„° ë·° í”„ë ˆìž„ê³¼ ê²°ê³¼ ë°ì´í„° ì •ë³´ë¥¼ ì—°ë™í•œë‹¤.
 		dataViewFrame.setDataTable(frame.getData());
 	}
 	
@@ -358,7 +358,7 @@ public class ControlPanel extends JPanel{
 		frame.initBettleScreen(width, height, beetleCount, delay);
 		setControllersUseable(false);
 		
-		lblLockBeetleNumber.setText("¡á");
+		lblLockBeetleNumber.setText("â– ");
 		lblLockBeetleNumber.setForeground(frame.getBeetleScreen().getCurrentViewBeetleColor());
 	}
 	
@@ -381,7 +381,7 @@ public class ControlPanel extends JPanel{
 	}
 	
 	/**
-	 * ÄÄÆ÷³ÍÆ®ÀÇ »óÅÂ º¯È­¸¦ °ü¸®ÇÑ´Ù.
+	 * ì»´í¬ë„ŒíŠ¸ì˜ ìƒíƒœ ë³€í™”ë¥¼ ê´€ë¦¬í•œë‹¤.
 	 */
 	private void gameChangeListener(){
 		new Thread(new Runnable() {
@@ -402,12 +402,12 @@ public class ControlPanel extends JPanel{
 								setProgressFromBoard();
 								
 								if(frame.getBeetleScreen().isPause())
-									btnAction.setText("½ÇÇà");
+									btnAction.setText("ì‹¤í–‰");
 								else
-									btnAction.setText("ÀÏ½Ã ÁßÁö");
+									btnAction.setText("ì¼ì‹œ ì¤‘ì§€");
 							}
 							else{
-								btnAction.setText("½ÇÇà");
+								btnAction.setText("ì‹¤í–‰");
 								if(frame.getBeetleScreen().isEnd()){
 									
 									int loopMax = Integer.valueOf((String)cmBoxLoop.getSelectedItem());
@@ -425,7 +425,7 @@ public class ControlPanel extends JPanel{
 									}
 									
 									btnAction.setEnabled(false);
-									btnReset.setText("ÃÊ±âÈ­");
+									btnReset.setText("ì´ˆê¸°í™”");
 								}
 							}
 								
@@ -439,11 +439,11 @@ public class ControlPanel extends JPanel{
 						
 					}else if(frame.getBeetleScreen() == null) {
 						tglbtnDebug.setForeground(Color.BLACK);						
-						btnReset.setText("ÁßÁö/ÃÊ±âÈ­");
+						btnReset.setText("ì¤‘ì§€/ì´ˆê¸°í™”");
 						btnAction.setEnabled(true);
 						btnReset.setEnabled(false);
 						setControllersUseable(true);
-						frame.showMeesageLabel("µüÁ¤¹ú·¹°¡ ¾ø¶Ç¿ë > v <");
+						frame.showMeesageLabel("ë”±ì •ë²Œë ˆê°€ ì—†ë˜ìš© > v <");
 					}
 					
 					repaint();

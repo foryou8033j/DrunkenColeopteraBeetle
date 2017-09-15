@@ -3,7 +3,7 @@ package Bettle.model.data;
 
 
 /**
- * 결과 데이터 관리 클래스
+ *    클
  * @author Jeongsam
  *
  */

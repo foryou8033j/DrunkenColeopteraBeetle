@@ -19,7 +19,7 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
 /**
- * °á°ú µ¥ÀÌÅÍ Ãâ·Â ÇÁ·¹ÀÓ Å¬·¡½º
+ * ê²°ê³¼ ë°ì´í„° ì¶œë ¥ í”„ë ˆì„ í´ë˜ìŠ¤
  * @author Jeongsam
  *
  */
@@ -30,7 +30,7 @@ public class DataViewFrame extends JFrame {
 	private JButton btnShowGraph;
 	
 	
-	String columnNames[] = { "°¡·Î Å©±â", "¼¼·Î Å©±â", "¼Ò¿ä ½Ã°£", "µüÁ¤ ¹ú·¹ ¼ö", "µô·¹ÀÌ"};
+	String columnNames[] = { "ê°€ë¡œ í¬ê¸°", "ì„¸ë¡œ í¬ê¸°", "ì†Œìš” ì‹œê°„", "ë”±ì • ë²Œë ˆ ìˆ˜", "ë”œë ˆì´"};
 	private JPanel panel_1;
 	private JScrollPane scrollPane;
 	private JTable table;
@@ -56,11 +56,11 @@ public class DataViewFrame extends JFrame {
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		btnExportFile = new JButton("\uD30C\uC77C \uB0B4\uBCF4\uB0B4\uAE30");
-		btnExportFile.setFont(new Font("±¼¸²", Font.BOLD, 14));
+		btnExportFile.setFont(new Font("êµ´ë¦¼", Font.BOLD, 14));
 		panel.add(btnExportFile);
 		
 		btnShowGraph = new JButton("\uADF8\uB798\uD504 \uBCF4\uAE30");
-		btnShowGraph.setFont(new Font("±¼¸²", Font.BOLD, 14));
+		btnShowGraph.setFont(new Font("êµ´ë¦¼", Font.BOLD, 14));
 		panel.add(btnShowGraph);
 		
 		panel_1 = new JPanel();
@@ -78,7 +78,7 @@ public class DataViewFrame extends JFrame {
 	}
 	
 	/**
-	 * Å×ÀÌºí µ¥ÀÌÅÍ µ¿±âÈ­
+	 * í…Œì´ë¸” ë°ì´í„° ë™ê¸°í™”
 	 * @param data
 	 */
 	public void setDataTable(ResultData data){

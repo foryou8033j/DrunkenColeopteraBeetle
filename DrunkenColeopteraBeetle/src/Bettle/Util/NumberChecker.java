@@ -1,14 +1,14 @@
 package Bettle.Util;
 
 /**
- * Á¤¼ö È®ÀÎ Å¬·¡½º
+ * ì •ìˆ˜ í™•ì¸ í´ë˜ìŠ¤
  * @author Jeongsam
  *
  */
 public class NumberChecker {
 
 	/**
-	 * ÀÔ·ÂµÈ ¹®ÀÚ¿­ÀÌ Á¤¼öÇüÅÂÀÎÁö È®ÀÎÇÑ´Ù.
+	 * ì…ë ¥ëœ ë¬¸ìì—´ì´ ì •ìˆ˜í˜•íƒœì¸ì§€ í™•ì¸í•œë‹¤.
 	 * @param str
 	 * @return {@link boolean}
 	 */

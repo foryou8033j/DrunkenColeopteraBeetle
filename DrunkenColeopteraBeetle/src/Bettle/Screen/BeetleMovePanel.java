@@ -28,7 +28,7 @@ enum DIRECTION {LEFT, RIGHT, UP, DOWN};
 
 
 /**
- * µüÁ¤¹ú·¹ ÀÌµ¿ °æ·Î Ç¥½Ã ±×·¡ÇÈ Å¬·¡½º
+ * ë”±ì •ë²Œë ˆ ì´ë™ ê²½ë¡œ í‘œì‹œ ê·¸ë˜í”½ í´ë˜ìŠ¤
  * @author Jeongsam
  *
  */
@@ -95,7 +95,7 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 	}
 	
 	/**
-	 * µüÁ¤¹ú·¹ º¸µå Á¤º¸¸¦ ÃÊ±âÈ­ÇÑ´Ù.
+	 * ë”±ì •ë²Œë ˆ ë³´ë“œ ì •ë³´ë¥¼ ì´ˆê¸°í™”í•œë‹¤.
 	 */
 	private void init()
 	{
@@ -132,8 +132,8 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 	}
 	
 	/**
-	 * ¹è°æÀ» ±×·ÁÁØ´Ù.
-	 * @param g ±×·¡ÇÈ½º ÄÄÆ÷³ÍÆ®
+	 * ë°°ê²½ì„ ê·¸ë ¤ì¤€ë‹¤.
+	 * @param g ê·¸ë˜í”½ìŠ¤ ì»´í¬ë„ŒíŠ¸
 	 */
 	private void doDrawBackground(Graphics g) {
 		
@@ -141,7 +141,7 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 		FontMetrics metr = getFontMetrics(asd);
 		g.setFont(asd);
 		
-		//¹è°æ ±×¸®±â
+		//ë°°ê²½ ê·¸ë¦¬ê¸°
 		try{
 			
 			MapModel mapModel = map.getThisMap(beetles[beetleLock].getX(), beetles[beetleLock].getY());
@@ -166,7 +166,7 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 	}
 	
 	/**
-	 * µüÁ¤¹ú·¹°¡ ÀÌµ¿ÇÑ °æ·Î¿Í 
+	 * ë”±ì •ë²Œë ˆê°€ ì´ë™í•œ ê²½ë¡œì™€ 
 	 * @param g
 	 */
 	private void doDrawing(Graphics g)
@@ -174,7 +174,7 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 
 		if(_run)
 		{
-			//Áö³ª¿Ô´ø °æ·Î ±×¸®±â.
+			//ì§€ë‚˜ì™”ë˜ ê²½ë¡œ ê·¸ë¦¬ê¸°.
 			
 			
 			Font asd = new Font("", Font.BOLD, 10);
@@ -213,7 +213,7 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 			}
 			
 			
-			//ÇöÀç µüÁ¤¹ú·¹ À§Ä¡ ±×¸®±â
+			//í˜„ì¬ ë”±ì •ë²Œë ˆ ìœ„ì¹˜ ê·¸ë¦¬ê¸°
 			g.setColor(beetles[beetleLock].getBeetleColor());
 			g.fillRect((beetles[beetleLock].getX() - tmpDrawX)*DOT_SIZE, (beetles[beetleLock].getY() - tmpDrawY)*DOT_SIZE, DOT_SIZE, DOT_SIZE);
 			
@@ -301,7 +301,7 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 			}
 		}
 		
-		//Áö³ª¿Ô´ø °æ·Î ±×¸®±â
+		//ì§€ë‚˜ì™”ë˜ ê²½ë¡œ ê·¸ë¦¬ê¸°
 		
 		for(int i=0; i<B_HEIGHT; i+=drawDistance) {
 			for (int j=0; j<B_WIDTH; j+=drawDistance) {
@@ -313,7 +313,7 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 			}
 		}
 		
-		//µüÁ¤¹ú·¹ ±×¸®±â
+		//ë”±ì •ë²Œë ˆ ê·¸ë¦¬ê¸°
 		
 		for(int i=0; i<beetles.length; i++){
 			g.setColor(beetles[i].getBeetleColor());
@@ -375,7 +375,7 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 		
 		endTimeString = dTime;
 		
-		g.drawString("°æ°ú ½Ã°£ : " + dTime,  10, metr.getHeight());
+		g.drawString("ê²½ê³¼ ì‹œê°„ : " + dTime,  10, metr.getHeight());
 		
 	}
 	
@@ -386,7 +386,7 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 		
 		g.setFont(small);
 		
-		g.drawString("³²ÀºÁöÁ¡ : " + noVisitCell, 10, metr.getHeight()+14);
+		g.drawString("ë‚¨ì€ì§€ì  : " + noVisitCell, 10, metr.getHeight()+14);
 	}
 	
 	private void drawCurrentCordinate(Graphics g) {
@@ -396,20 +396,20 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 		
 		g.setFont(small);
 		
-		g.drawString("ÇöÀç ÁÂÇ¥ : " + beetles[beetleLock].getX() + " x " + beetles[beetleLock].getY(), 10, metr.getHeight()+28);
+		g.drawString("í˜„ì¬ ì¢Œí‘œ : " + beetles[beetleLock].getX() + " x " + beetles[beetleLock].getY(), 10, metr.getHeight()+28);
 	}
 	
 	
 	/**
-	 * µüÁ¤¹ú·¹¸¦ ÁÂÇ¥»ó¿¡¼­ ÀÌµ¿½ÃÅ²´Ù.
+	 * ë”±ì •ë²Œë ˆë¥¼ ì¢Œí‘œìƒì—ì„œ ì´ë™ì‹œí‚¨ë‹¤.
 	 */
 	private void move(int beetleNumber)
 	{
 		
-		//ÀÌµ¿Çß´ø ÁöÁ¡ ÀúÀå
+		//ì´ë™í–ˆë˜ ì§€ì  ì €ì¥
 		mapData.setThisCellVisit(beetles[beetleNumber].getX(), beetles[beetleNumber].getY());
 		
-		//ÀÌµ¿ ÇÒ ÁöÁ¡
+		//ì´ë™ í•  ì§€ì 
 		if(beetles[beetleNumber].isDirection(Pos.LEFT))
 			beetles[beetleNumber].set_X_Minus();
 		if(beetles[beetleNumber].isDirection(Pos.RIGHT))
@@ -422,10 +422,10 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 		if(checkCollision(beetleNumber))
 			return;
 		
-		//´ÙÀ½ ·£´ı ÀÌµ¿ ÁöÁ¡
+		//ë‹¤ìŒ ëœë¤ ì´ë™ ì§€ì 
 		beetles[beetleNumber].makeDirection();
 		
-		//ÀÌµ¿ ¼ö Ãß°¡
+		//ì´ë™ ìˆ˜ ì¶”ê°€
 		beetles[beetleNumber].addMoveCount();
 		
 
@@ -433,7 +433,7 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 	}
 	
 	/**
-	 * º®°ú Ãæµ¹ ÇÏ¿´À» °æ¿ì¸¦ °Ë»çÇÑ´Ù.
+	 * ë²½ê³¼ ì¶©ëŒ í•˜ì˜€ì„ ê²½ìš°ë¥¼ ê²€ì‚¬í•œë‹¤.
 	 * @return {@link boolean}
 	 */
 	private boolean checkCollision(int beetleNumber)
@@ -471,7 +471,7 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 		_end = true;
 		
 		
-		//µ¥ÀÌÅÍ ºä ÇÁ·¹ÀÓ°ú °á°ú µ¥ÀÌÅÍ Á¤º¸¸¦ ¿¬µ¿ÇÑ´Ù.
+		//ë°ì´í„° ë·° í”„ë ˆì„ê³¼ ê²°ê³¼ ë°ì´í„° ì •ë³´ë¥¼ ì—°ë™í•œë‹¤.
 		endTime = Calendar.getInstance().getTimeInMillis();
 		
 		frame.getData().saveData(B_WIDTH, B_HEIGHT, endTimeString, beetleCount, DELAY);
@@ -486,7 +486,7 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 		
 		if(_run)
 		{
-			//ÀÌµ¿
+			//ì´ë™
 			if(!_pause){
 				
 				for(int i=0; i<beetles.length; i++){
