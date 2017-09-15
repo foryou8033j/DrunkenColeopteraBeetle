@@ -45,7 +45,7 @@ public class DataViewFrame extends JFrame {
 		setTitle("\uB370\uC774\uD130 \uD14C\uC774\uBE14");
 		setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 460, 416);
+
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
