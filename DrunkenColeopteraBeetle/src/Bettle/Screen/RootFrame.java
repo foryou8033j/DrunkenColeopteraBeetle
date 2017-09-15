@@ -15,7 +15,7 @@ import Bettle.model.data.ResultData;
  * @author Jeongsam
  *
  */
-public class Frame extends JFrame {
+public class RootFrame extends JFrame {
 	
 	private BeetleMovePanel screen;
 	private ControlPanel controller;
@@ -24,7 +24,7 @@ public class Frame extends JFrame {
 	
 	private JLabel messageLabel = new JLabel("");
 	
-	public Frame() {
+	public RootFrame() {
 		
 		setTitle("술취한 딱정벌레 - 20140636 서정삼");
 		setVisible(true);

@@ -35,7 +35,7 @@ enum DIRECTION {LEFT, RIGHT, UP, DOWN};
 public class BeetleMovePanel extends JPanel implements ActionListener
 {
 
-	Frame frame;
+	RootFrame frame;
 	
 	public final static int DOT_SIZE = 10;
 	
@@ -75,7 +75,7 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 	
 	private Graphics _g;
 	
-	public BeetleMovePanel(Frame frame, int boardWidth, int boardHeight, int beetleCount,  int delay)
+	public BeetleMovePanel(RootFrame frame, int boardWidth, int boardHeight, int beetleCount,  int delay)
 	{
 		this.frame = frame;
 		
@@ -117,7 +117,7 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 			beetles[i] = new Beetle(CLR_HEAD[i], B_WIDTH, B_HEIGHT);
 		}
 		
-		mapData = new MapData(B_WIDTH, B_HEIGHT);
+		mapData = new MapData(frame, B_WIDTH, B_HEIGHT);
 		
 		startTime = Calendar.getInstance().getTimeInMillis();
 		
@@ -294,7 +294,6 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 		g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.6f));
 		
 		MapDataModel mapModel = mapData.getThisMap(beetles[beetleLock].getX(), beetles[beetleLock].getY());	
-		
 		
 		
 		int widthMax = B_WIDTH / 100;

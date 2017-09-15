@@ -1,8 +1,15 @@
 package Bettle.model.maps;
 
-import java.awt.Color;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.util.concurrent.ExecutionException;
 
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+
+import Bettle.Screen.RootFrame;
+import Bettle.Util.Dialog.ProgressbarDialog;
 
 /**
  * 분리 되어진 각 맵의 데이터 저장 클래스
@@ -18,15 +25,78 @@ public class MapData {
 	private final int B_WIDTH;
 	private final int B_HEIGHT;
 	
-	public MapData(int mapWidth, int mapHeight) {
+	ProgressbarDialog dialog = null;
+	
+	RootFrame frame = null;
+	
+	public MapData(RootFrame frame, int mapWidth, int mapHeight){
 		
 		B_WIDTH = mapWidth;
 		B_HEIGHT = mapHeight;
 		
+		this.frame = frame;
+		
 		//방문 하지 않은 셀의 초기값을 설정한다.
 		countOfNoVisitCells = B_WIDTH * B_HEIGHT;
 		
-		this.models = new MapCompartmentDesigner().createMaps(mapWidth, mapHeight);
+		
+		
+		SwingUtilities.invokeLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				
+			}
+		});
+		
+		dialog = new ProgressbarDialog(getFrame(), "데이터 초기화 중...", "데이터 초기화 준비중");
+		dialog.setTitle("맵 데이터 구성 중...");
+		
+		MapCompartmentDesigner designerTask = new MapCompartmentDesigner(frame, mapWidth, mapHeight);
+		
+		designerTask.addPropertyChangeListener(
+			     new PropertyChangeListener() {
+			         public  void propertyChange(PropertyChangeEvent evt) {
+			             if ("progress".equals(evt.getPropertyName())) {
+			            	 if(dialog != null){
+			            		 dialog.getProgressBar().setValue((Integer)evt.getNewValue());
+			            		 
+			            		 if((Integer)evt.getNewValue() > 50)
+			            			 dialog.setContentsText("<html><center>맵 구성 중... " + (Integer)evt.getNewValue() + "%<br>메모리가 부족할 경우 중지될 수 있습니다.");
+			            		 else
+			            			 dialog.setContentsText("맵 구성 중... " + (Integer)evt.getNewValue() + "%");
+			            	 }
+									
+			             }
+			         }
+			     });
+		
+		try {
+			
+			
+			designerTask.execute();
+			this.models = designerTask.get();
+			
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		SwingUtilities.invokeLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				if(dialog != null){
+					dialog.dispose();
+					dialog.setVisible(false);
+					dialog = null; //물론 gc가 없애주겠지만 혹시를 위하여..
+				}
+			}
+		});
+		
 	}
 	
 	/**
@@ -78,7 +148,7 @@ public class MapData {
 		
 	}
 	
-public MapDataModel getThisMap(int x, int y) {
+	public MapDataModel getThisMap(int x, int y) {
 		
 		int boardX = 0;
 		int boardY = 0;
@@ -108,10 +178,10 @@ public MapDataModel getThisMap(int x, int y) {
 		}catch (Exception e)
 		{
 			//TODO 170915 좌표 벗어나는 오류 원인 해결 필요
-			e.printStackTrace();
+			/*e.printStackTrace();
 			System.out.println(x + " " + y);
 			System.out.println(boardX + " " + boardY);
-			JOptionPane.showConfirmDialog(null, "오류");
+			JOptionPane.showConfirmDialog(null, "오류");*/
 			System.exit(0);
 		}
 		return models[boardX][boardY];
@@ -120,6 +190,14 @@ public MapDataModel getThisMap(int x, int y) {
 	
 	public MapDataModel[][] getMapModels(){
 		return models;
+	}
+	
+	private RootFrame getFrame(){
+		return frame;
+	}
+	
+	private ProgressbarDialog getDialog(){
+		return dialog;
 	}
 	
 }
