@@ -74,6 +74,8 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 	
 	private String endTimeString = ""; 
 	
+	private Graphics _g;
+	
 	public BeetleMovePanel(Frame frame, int boardWidth, int boardHeight, int beetleCount,  int delay)
 	{
 		this.frame = frame;
@@ -92,6 +94,10 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 	
 	public void showFrameAndInit(){
 		
+	}
+	
+	private Graphics getGraphicsComponent(){
+		return _g;
 	}
 	
 	/**
@@ -124,9 +130,14 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 	}
 	
 	@Override
-	public void paintComponent(final Graphics g)
+	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
+		_g = g;
+		
+		if(_g == null)
+			return;
+		
 		doDrawBackground(g);
 		doDrawing(g);
 	}
@@ -151,8 +162,10 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 			
 			for(int i=0; i < tmpDrawHeight; i++) {
 				for(int j=0; j < tmpDrawWidth; j++) {
+					
 					g.setColor(CLR_BACKGROUND);
-					g.fillRect(j*DOT_SIZE, i*DOT_SIZE, DOT_SIZE, DOT_SIZE);
+					g.fillRect(i*DOT_SIZE, j*DOT_SIZE, DOT_SIZE, DOT_SIZE);
+					
 				}
 			}
 			
@@ -181,12 +194,12 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 			FontMetrics metr = getFontMetrics(asd);
 			g.setFont(asd);
 			
-			MapModel mapModel = map.getThisMap(beetles[beetleLock].getX(), beetles[beetleLock].getY());
+			final MapModel mapModel = map.getThisMap(beetles[beetleLock].getX(), beetles[beetleLock].getY());
 			
 			//if()
 			
-			int tmpDrawX = mapModel.getX();
-			int tmpDrawY = mapModel.getY();
+			final int tmpDrawX = mapModel.getX();
+			final int tmpDrawY = mapModel.getY();
 			int tmpDrawWidth = tmpDrawX + mapModel.getwidth();
 			int tmpDrawHeight = tmpDrawY + mapModel.getHeight();
 				
@@ -214,13 +227,8 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 			
 			
 			//현재 딱정벌레 위치 그리기
-			g.setColor(beetles[beetleLock].getBeetleColor());
-			g.fillRect((beetles[beetleLock].getX() - tmpDrawX)*DOT_SIZE, (beetles[beetleLock].getY() - tmpDrawY)*DOT_SIZE, DOT_SIZE, DOT_SIZE);
-			
 			
 			for(int i=0; i<beetles.length; i++){
-				if(i == beetleLock) 
-					continue;
 				
 				if(!mapModel.isInThisMap(beetles[i].getX(), beetles[i].getY()))
 					continue;
@@ -234,7 +242,7 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 
 			drawVisitCells(g);
 			drawTime(g);
-			drawCurrentCordinate(g);
+			//drawCurrentCordinate(g);
 			
 			if(_pause) drawPauseScreen(g);
 			
@@ -279,7 +287,7 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 			return;
 		
 		int posX = 10;
-		int posY = 60;
+		int posY = 40;
 		
 		
 		int drawDistance = B_WIDTH / 100;
@@ -316,6 +324,7 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 		//딱정벌레 그리기
 		
 		for(int i=0; i<beetles.length; i++){
+			
 			g.setColor(beetles[i].getBeetleColor());
 			g.fillRect(beetles[i].getX() / widthMax + posX, beetles[i].getY() / heightMax + posY, 1, 1);
 			
