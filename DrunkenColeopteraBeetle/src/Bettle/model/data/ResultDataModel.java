@@ -2,7 +2,7 @@ package Bettle.model.data;
 
 
 /**
- * 결과 데이터 저장 모델 클래스이다.
+ * 결과 데이터 저장 모델 클래스
  * @author Jeongsam
  *
  */
@@ -36,22 +36,42 @@ public class ResultDataModel {
 		
 	}
 	
+	/**
+	 * 저장 된 가로 크기를 반환한다.
+	 * @return {@link int}
+	 */
 	public int getWidth(){
 		return width;
 	}
 	
+	/**
+	 * 저장 된 세로 크기를 반환한다.
+	 * @return {@link int}
+	 */
 	public int getHeight(){
 		return height;
 	}
 	
+	/**
+	 * 저장 된 결과 시간 값을 반환한다.
+	 * @return {@link String}
+	 */
 	public String getTime(){
 		return endTime;
 	}
 	
+	/**
+	 * 저장 된 딱정벌레 마리 수 값을 반환한다.
+	 * @return {@link int}
+	 */
 	public int getBeetleCount(){
 		return beetleCount;
 	}
 	
+	/**
+	 * 저장 된 딜레이 시간 값을 반환한다.
+	 * @return {@link int}
+	 */
 	public int getDalay(){
 		return delay;
 	}
