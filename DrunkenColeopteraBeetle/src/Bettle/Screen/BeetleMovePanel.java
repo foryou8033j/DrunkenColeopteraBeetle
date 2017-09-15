@@ -251,7 +251,7 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 		
 		drawNoVisitCellCount(g, noVisitCellCount);
 		
-		if(noVisitCellCount == 0){
+		if(noVisitCellCount <= 0){
 			drawEndScreen(g);
 			
 			quit();
