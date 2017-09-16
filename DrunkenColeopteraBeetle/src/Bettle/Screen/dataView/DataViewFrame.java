@@ -8,6 +8,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
@@ -34,18 +35,18 @@ import java.awt.event.ActionEvent;
  */
 public class DataViewFrame extends JFrame {
 
+	private String columnNames[] = { "가로 크기", "세로 크기", "소요 시간", "딱정 벌레 수", "딜레이"};
+	
 	private JPanel contentPane;
 	private JButton btnExportFile;
 	private JButton btnShowGraph;
-	
-	private ResultData resultData = null;
-	
-	String columnNames[] = { "가로 크기", "세로 크기", "소요 시간", "딱정 벌레 수", "딜레이"};
 	private JPanel panel_1;
 	private JScrollPane scrollPane;
 	private JTable table;
 	private JButton btnResetData;
 
+	
+	private ResultData resultData = null;
 
 	/**
 	 * Create the frame.
@@ -53,7 +54,7 @@ public class DataViewFrame extends JFrame {
 	public DataViewFrame() {
 		
 		setType(Type.UTILITY);
-		setTitle("\uB370\uC774\uD130 \uD14C\uC774\uBE14");
+		setTitle("데이터 테이블");
 		setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
@@ -66,7 +67,7 @@ public class DataViewFrame extends JFrame {
 		contentPane.add(panel, BorderLayout.SOUTH);
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		btnExportFile = new JButton("\uD30C\uC77C \uB0B4\uBCF4\uB0B4\uAE30");
+		btnExportFile = new JButton("파일 내보내기(*.csv)");
 		btnExportFile.setFont(new Font("굴림", Font.BOLD, 14));
 		btnExportFile.addActionListener(new ActionListener() {
 			
@@ -74,8 +75,11 @@ public class DataViewFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				//TODO 데이터 없을 경우 저장이 불가능 해야함.
-				if(resultData == null || resultData.getData().length==0 || table.getRowCount()==0)
+				if(resultData == null || resultData.getData().length==0 || table.getRowCount()==0){
+					JOptionPane.showMessageDialog(rootPane, "저장 할 데이터가 없습니다.", "경고", JOptionPane.WARNING_MESSAGE);
 					return;
+				}
+					
 				
 				JFileChooser fileChooser = new JFileChooser();
 				fileChooser.setFileFilter(new FileNameExtensionFilter("CSV File(*.csv)", "csv"));
@@ -89,16 +93,21 @@ public class DataViewFrame extends JFrame {
 		});
 		panel.add(btnExportFile);
 		
-		btnShowGraph = new JButton("\uADF8\uB798\uD504 \uBCF4\uAE30");
+		btnShowGraph = new JButton("그래프 보기");
 		btnShowGraph.setFont(new Font("굴림", Font.BOLD, 14));
 		panel.add(btnShowGraph);
 		
-		btnResetData = new JButton("데이터 초기화");
+		btnResetData = new JButton("데이터 삭제");
 		btnResetData.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				resultData.resetData();
-				setDataTable(resultData);
+				int response = JOptionPane.showConfirmDialog(rootPane, "<html>데이터를 삭제하면 되돌릴 수 없습니다.<br>"
+						+ "그래도 삭제 하시겠습니까?", "경고", JOptionPane.YES_NO_OPTION);
+				
+				if(response==0){
+					resultData.resetData();
+					setDataTable(resultData);
+				}	
 				
 			}
 		});
