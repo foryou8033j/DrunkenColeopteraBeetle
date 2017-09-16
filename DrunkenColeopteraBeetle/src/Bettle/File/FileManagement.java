@@ -1,12 +1,19 @@
 package Bettle.File;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
+import javax.swing.JOptionPane;
 
 import Bettle.model.data.ResultData;
 import Bettle.model.data.ResultDataModel;
@@ -36,24 +43,21 @@ public class FileManagement {
 		}*/
 			
 		
-		int length = resultDatas.getData().length;
+		int length = resultDatas.dataCount();
 		
 		String rowData[] = new String[length];
 		
 		for(int i=0; i<length; i++){
 			
 			try{
-				ResultDataModel modelData = resultDatas.getData()[i];
+				ResultDataModel modelData = resultDatas.getData()[i];	
 				
-				if(modelData == null){
-					length = i;
-					break;
-				}
-					
+				SimpleDateFormat formatter = new SimpleDateFormat ( "mm.ss.SSS", Locale.KOREA );
+				String resultTime = formatter.format ( modelData.getTime() );
 				
 				rowData[i] = new String(modelData.getWidth() + "," 
 						+ modelData.getHeight() + "," 
-						+ modelData.getTime() + "," 
+						+ resultTime + "," 
 						+ modelData.getBeetleCount() + "," 
 						+ modelData.getDalay());
 				
@@ -79,6 +83,9 @@ public class FileManagement {
 				writer.newLine();
 			}
 			
+			writer.newLine();
+			writer.write("술취한 딱정벌레 시뮬레이터에서 생성 된 데이터입니다. 20140636 서정삼");
+			
 			writer.close();
 			
 			
@@ -94,6 +101,43 @@ public class FileManagement {
 		}
 		
 		
+		showResultDialog(csvFilePath);
+		
+	}
+	
+	private void showResultDialog(String savedPath){
+		
+		File file = new File(savedPath);
+		
+		if(!file.exists()){
+			
+			JOptionPane.showMessageDialog(null, "파일이 없거나 손상되었습니다.", "저장 오류", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		
+		try {
+			BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(savedPath), "MS949"));
+			
+			String messageString = "<html>성공적으로 다음의 데이터가 저장되었습니다.<br><br>";
+			String readString;
+			while ((readString = reader.readLine()) != null) {
+		        messageString = messageString +"<br>" + readString;
+		      }
+			
+			messageString = messageString +"<html>";
+			
+			JOptionPane.showMessageDialog(null, messageString, "저장 성공", JOptionPane.INFORMATION_MESSAGE);
+			
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 	}
