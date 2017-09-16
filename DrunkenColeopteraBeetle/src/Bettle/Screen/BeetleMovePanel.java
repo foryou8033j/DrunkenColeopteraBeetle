@@ -491,6 +491,7 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 			//이동
 			if(!_pause){
 				
+				//여기서 딱정벌레 개수만큼 쓰레드를 생성한다.
 				for(int i=0; i<beetles.length; i++){
 					
 					final int a = i;
@@ -503,6 +504,7 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 						}
 					}).start();
 					
+					//이동이 끝나면 쓰레드는 제거된다.
 				}
 					
 			}
