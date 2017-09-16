@@ -6,18 +6,23 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
+import Bettle.Screen.Controller.File.FileManagement;
 import Bettle.model.data.ResultData;
 import Bettle.model.data.ResultDataModel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.awt.event.ActionEvent;
 
 /**
@@ -36,7 +41,7 @@ public class DataViewFrame extends JFrame {
 	private JPanel panel_1;
 	private JScrollPane scrollPane;
 	private JTable table;
-	private JButton btnNewButton;
+	private JButton btnResetData;
 
 
 	/**
@@ -60,22 +65,39 @@ public class DataViewFrame extends JFrame {
 		
 		btnExportFile = new JButton("\uD30C\uC77C \uB0B4\uBCF4\uB0B4\uAE30");
 		btnExportFile.setFont(new Font("굴림", Font.BOLD, 14));
+		btnExportFile.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				
+				JFileChooser fileChooser = new JFileChooser();
+				fileChooser.setFileFilter(new FileNameExtensionFilter("CSV File(*.csv)", "csv"));
+				fileChooser.showSaveDialog(null);
+				
+				if(fileChooser.getSelectedFile() != null)
+					new FileManagement().generateFile(fileChooser.getSelectedFile());
+				
+				
+			}
+		});
 		panel.add(btnExportFile);
 		
 		btnShowGraph = new JButton("\uADF8\uB798\uD504 \uBCF4\uAE30");
 		btnShowGraph.setFont(new Font("굴림", Font.BOLD, 14));
 		panel.add(btnShowGraph);
 		
-		btnNewButton = new JButton("데이터 초기화");
-		btnNewButton.addActionListener(new ActionListener() {
+		btnResetData = new JButton("데이터 초기화");
+		btnResetData.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				
 				
 			}
 		});
-		btnNewButton.setFont(new Font("굴림", Font.BOLD, 14));
-		panel.add(btnNewButton);
+		btnResetData.setFont(new Font("굴림", Font.BOLD, 14));
+		panel.add(btnResetData);
 		
 		panel_1 = new JPanel();
 		contentPane.add(panel_1, BorderLayout.NORTH);
