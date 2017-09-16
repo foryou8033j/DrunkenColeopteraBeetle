@@ -37,7 +37,8 @@ public class Frame extends JFrame {
 		try {
 			//Metro 환경이나 일부 Aero 환경에서 GUI가 깨지는 현상을 방지하기 위해 
 			//아래 명령어 사용
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());	
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+			
 		}catch (Exception e) {
 			//ignore
 		}
