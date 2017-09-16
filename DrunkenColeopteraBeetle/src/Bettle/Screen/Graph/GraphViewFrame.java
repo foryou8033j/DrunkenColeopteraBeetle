@@ -1,11 +1,30 @@
 package Bettle.Screen.Graph;
 
 import java.awt.BasicStroke;
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GradientPaint;
+import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.ArrayList;
+import java.util.HashSet;
 
+import javax.swing.Box;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSeparator;
+import javax.swing.border.BevelBorder;
 
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -28,36 +47,23 @@ import org.jfree.ui.TextAnchor;
 
 import Bettle.model.data.ResultData;
 import Bettle.model.data.ResultDataModel;
-import java.awt.BorderLayout;
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import java.awt.Component;
-import javax.swing.Box;
-import java.awt.Rectangle;
-import java.awt.FlowLayout;
-import javax.swing.BoxLayout;
-import java.awt.GridLayout;
-import javax.swing.border.LineBorder;
-import java.awt.ComponentOrientation;
-import java.awt.Cursor;
-import java.awt.Dimension;
-import javax.swing.JButton;
-import javax.swing.border.BevelBorder;
-import javax.swing.JSeparator;
-import javax.swing.JComboBox;
-import javax.swing.JCheckBox;
-import javax.swing.DefaultComboBoxModel;
 
 public class GraphViewFrame extends JFrame{
 
 	ChartPanel chartPanel = null;
-	private JComboBox cmBoxMapSize;
-	private JComboBox cmBoxBeetleCounts;
+	private JComboBox<String> cmBoxMapSize;
+	private JComboBox<String> cmBoxBeetleCounts;
 	private JCheckBox chckbxMapSize;
 	private JCheckBox chckbxBeetleCounts;
 	private JCheckBox chckbxResultTime;
 	
+	private ResultData resultData;
+	
 	public GraphViewFrame(ResultData resultData) {
+		
+		super("데이터 그래프");
+		this.resultData = resultData;
+		
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
@@ -89,16 +95,33 @@ public class GraphViewFrame extends JFrame{
 		panel_1.add(label);
 		
 		chckbxMapSize = new JCheckBox("맵 크기");
+		chckbxMapSize.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				reDrawGraph(getResultData());
+			}
+		});
 		chckbxMapSize.setSelected(true);
 		chckbxMapSize.setBounds(5, 49, 115, 23);
 		panel_1.add(chckbxMapSize);
 		
 		chckbxBeetleCounts = new JCheckBox("딱정 벌레 수");
+		chckbxBeetleCounts.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				reDrawGraph(getResultData());
+			}
+		});
 		chckbxBeetleCounts.setSelected(true);
 		chckbxBeetleCounts.setBounds(5, 74, 115, 23);
 		panel_1.add(chckbxBeetleCounts);
 		
 		chckbxResultTime = new JCheckBox("소요 시간");
+		chckbxResultTime.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				reDrawGraph(getResultData());
+			}
+		});
 		chckbxResultTime.setSelected(true);
 		chckbxResultTime.setBounds(5, 99, 115, 23);
 		panel_1.add(chckbxResultTime);
@@ -120,13 +143,41 @@ public class GraphViewFrame extends JFrame{
 		label_2.setBounds(5, 203, 75, 15);
 		panel_1.add(label_2);
 		
-		cmBoxMapSize = new JComboBox();
-		cmBoxMapSize.setModel(new DefaultComboBoxModel(new String[] {"전체보기"}));
+		cmBoxMapSize = new JComboBox<String>();
+		cmBoxMapSize.addItemListener(new ItemListener() {
+			
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				if (e.getStateChange() == ItemEvent.SELECTED) {
+					
+					if(!cmBoxMapSize.getSelectedItem().equals("전체보기"))
+						cmBoxBeetleCounts.setEnabled(false);
+					else
+						cmBoxBeetleCounts.setEnabled(true);
+					
+					doDrawGraph(getResultData());
+			       }
+			}
+		});
+		cmBoxMapSize.setModel(new DefaultComboBoxModel(new String[]{"전체보기"}));
 		cmBoxMapSize.setBounds(15, 172, 103, 21);
 		panel_1.add(cmBoxMapSize);
 		
-		cmBoxBeetleCounts = new JComboBox();
-		cmBoxBeetleCounts.setModel(new DefaultComboBoxModel(new String[] {"전체보기"}));
+		cmBoxBeetleCounts = new JComboBox<String>();
+		cmBoxBeetleCounts.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				if (e.getStateChange() == ItemEvent.SELECTED) {
+					
+					if(!cmBoxBeetleCounts.getSelectedItem().equals("전체보기"))
+						cmBoxMapSize.setEnabled(false);
+					else
+						cmBoxMapSize.setEnabled(true);
+					
+					doDrawGraph(getResultData());
+			     }
+			}
+		});
+		cmBoxBeetleCounts.setModel(new DefaultComboBoxModel(new String[]{"전체보기"}));
 		cmBoxBeetleCounts.setBounds(15, 226, 103, 21);
 		panel_1.add(cmBoxBeetleCounts);
 		
@@ -137,14 +188,59 @@ public class GraphViewFrame extends JFrame{
 		chartPanel = new ChartPanel(getChart(resultData));
 		getContentPane().add(chartPanel, BorderLayout.CENTER);
 		
+		reDrawGraph(resultData);
+		
 		show();
 		
 	}
 	
+	private ResultData getResultData(){
+		return this.resultData;
+	}
+	
 	public void reDrawGraph(ResultData resultData){
 		
+		makeStringArray(resultData);
+		
+		doDrawGraph(resultData);
+		
+	}
+	
+	private void doDrawGraph(ResultData resultData){
 		chartPanel.removeAll();
 		chartPanel.setChart(getChart(resultData));
+	}
+	
+	private void makeStringArray(ResultData resultData){
+		
+		cmBoxMapSize.removeAllItems();
+		cmBoxBeetleCounts.removeAllItems();
+		
+		ArrayList<String> arrListMapSize = new ArrayList<String>();
+		
+		ArrayList<String> arrListBeetleCounts = new ArrayList<String>();
+		
+		for(int i=0; i<resultData.dataCount(); i++){
+			arrListMapSize.add(String.valueOf(resultData.getData()[i].getWidth()));
+			arrListBeetleCounts.add(String.valueOf(resultData.getData()[i].getBeetleCount()));
+		}
+			
+		
+		// HashSet 데이터 형태로 생성되면서 중복 제거됨
+		HashSet hsMapSize = new HashSet(arrListMapSize);
+		HashSet hsBeetleCounts = new HashSet(arrListBeetleCounts);
+
+		// ArrayList 형태로 다시 생성
+		ArrayList<String> newArrListMapSize = new ArrayList<String>(hsMapSize);
+		ArrayList<String> newArrListBeetleCounts = new ArrayList<String>(hsBeetleCounts);
+		
+		cmBoxMapSize.addItem("전체보기");
+		for(String str:newArrListMapSize)
+			cmBoxMapSize.addItem(str);
+		
+		cmBoxBeetleCounts.addItem("전체보기");
+		for(String str:newArrListBeetleCounts)
+			cmBoxBeetleCounts.addItem(str);
 		
 	}
 	
@@ -162,9 +258,16 @@ public class GraphViewFrame extends JFrame{
 			try{
 				ResultDataModel modelData = resultData.getData()[i];
 				
-				dataset12.addValue(modelData.getWidth(), "맵 사이즈", String.valueOf(i+1) +"회");
-				dataset1.addValue(modelData.getBeetleCount(), "딱정 벌레 수", String.valueOf(i+1) +"회");
-				dataset2.addValue(modelData.getTime(), "결과 시간(ms)", String.valueOf(i+1) +"회");
+				if( cmBoxBeetleCounts.getSelectedIndex()!=0 &&  modelData.getBeetleCount() != Integer.valueOf((String) cmBoxBeetleCounts.getSelectedItem() ))
+					continue;
+				
+				if( cmBoxMapSize.getSelectedIndex()!=0 &&  modelData.getWidth() != Integer.valueOf((String) cmBoxMapSize.getSelectedItem() ))
+					continue;
+				
+				if(chckbxMapSize.isSelected()) dataset12.addValue(modelData.getWidth(), "맵 사이즈", String.valueOf(i+1) +"회");
+				if(chckbxResultTime.isSelected()) dataset2.addValue(modelData.getTime(), "결과 시간(ms)", String.valueOf(i+1) +"회");
+				if(chckbxBeetleCounts.isSelected()) dataset1.addValue(modelData.getBeetleCount(), "딱정 벌레 수", String.valueOf(i+1) +"회");
+				
 				
 			}catch (Exception e){
 				//ignore
