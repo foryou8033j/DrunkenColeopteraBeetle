@@ -23,6 +23,8 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 import java.awt.event.ActionEvent;
 
 /**
@@ -132,7 +134,11 @@ public class DataViewFrame extends JFrame {
 			
 			try{
 				ResultDataModel modelData = data.getData()[i];
-				Object objectData[] = {modelData.getWidth(), modelData.getHeight(), modelData.getTime(), modelData.getBeetleCount(), modelData.getDalay()};
+				
+				SimpleDateFormat formatter = new SimpleDateFormat ( "mm:ss:SSS", Locale.KOREA );
+				String resultTime = formatter.format ( modelData.getTime() );
+				
+				Object objectData[] = {modelData.getWidth(), modelData.getHeight(), resultTime, modelData.getBeetleCount(), modelData.getDalay()};
 				
 				for(int j=0; j<5; j++)
 					rowData[i][j] = objectData[j];
