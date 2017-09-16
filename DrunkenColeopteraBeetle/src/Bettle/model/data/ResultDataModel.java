@@ -11,7 +11,7 @@ public class ResultDataModel {
 	private int width;
 	private int height;
 	
-	private String endTime;
+	private long endTime;
 	private int beetleCount;
 	private int delay;
 	
@@ -23,7 +23,7 @@ public class ResultDataModel {
 	 * @param beetleCount {@link int}
 	 * @param delay {@link int}
 	 */
-	public ResultDataModel(int width, int height, String time, int beetleCount, int delay) {
+	public ResultDataModel(int width, int height, long time, int beetleCount, int delay) {
 		
 		this.width = width;
 		this.height = height;
@@ -54,9 +54,9 @@ public class ResultDataModel {
 	
 	/**
 	 * 저장 된 결과 시간 값을 반환한다.
-	 * @return {@link String}
+	 * @return {@link long}
 	 */
-	public String getTime(){
+	public long getTime(){
 		return endTime;
 	}
 	

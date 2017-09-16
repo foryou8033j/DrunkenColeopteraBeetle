@@ -15,7 +15,7 @@ import Bettle.model.data.ResultData;
  * @author Jeongsam
  *
  */
-public class Frame extends JFrame {
+public class RootFrame extends JFrame {
 	
 	private BeetleMovePanel screen;
 	private ControlPanel controller;
@@ -24,7 +24,7 @@ public class Frame extends JFrame {
 	
 	private JLabel messageLabel = new JLabel("");
 	
-	public Frame() {
+	public RootFrame() {
 		
 		setTitle("술취한 딱정벌레 - 20140636 서정삼");
 		setVisible(true);
@@ -37,8 +37,7 @@ public class Frame extends JFrame {
 		try {
 			//Metro 환경이나 일부 Aero 환경에서 GUI가 깨지는 현상을 방지하기 위해 
 			//아래 명령어 사용
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-			
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());	
 		}catch (Exception e) {
 			//ignore
 		}

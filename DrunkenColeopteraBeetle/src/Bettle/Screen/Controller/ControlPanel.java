@@ -19,7 +19,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
 import Bettle.Screen.BeetleMovePanel;
-import Bettle.Screen.Frame;
+import Bettle.Screen.RootFrame;
 import Bettle.Screen.dataView.DataViewFrame;
 
 /**
@@ -30,9 +30,9 @@ import Bettle.Screen.dataView.DataViewFrame;
 public class ControlPanel extends JPanel{
 
 	
-	private Frame frame = null;
+	private RootFrame frame = null;
 	
-	private int MAX_COUNT_OF_BEETLES = 1024;
+	private int MAX_COUNT_OF_BEETLES = 128;
 	
 	private DataViewFrame dataViewFrame = new DataViewFrame();
 	
@@ -56,7 +56,7 @@ public class ControlPanel extends JPanel{
 	/**
 	 * Create the panel.
 	 */
-	public ControlPanel(Frame beetleFrame) {
+	public ControlPanel(RootFrame beetleFrame) {
 		setBorder(new LineBorder(new Color(0, 0, 0)));
 		this.frame = beetleFrame;
 		setLayout(null);
@@ -75,7 +75,7 @@ public class ControlPanel extends JPanel{
 		add(lblWidth);
 		
 		cmBoxWidth = new JComboBox();
-		cmBoxWidth.setModel(new DefaultComboBoxModel(new String[] {"20", "30", "50", "100", "200", "300", "500", "1000", "10000", "100000"}));
+		cmBoxWidth.setModel(new DefaultComboBoxModel(new String[] {"20", "30", "50", "100", "200", "300", "500", "1000","2000", "3000", "5000", "10000", "20000", "30000", "50000", "100000"}));
 		cmBoxWidth.setBounds(84, 35, 69, 21);
 		add(cmBoxWidth);
 		
@@ -84,7 +84,7 @@ public class ControlPanel extends JPanel{
 		add(lblHeight);
 		
 		cmBoxHeight = new JComboBox();
-		cmBoxHeight.setModel(new DefaultComboBoxModel(new String[] {"20", "30", "50", "100", "200", "300", "500", "1000", "10000", "100000"}));
+		cmBoxHeight.setModel(new DefaultComboBoxModel(new String[] {"20", "30", "50", "100", "200", "300", "500", "1000","2000", "3000", "5000", "10000", "20000", "30000", "50000", "100000"}));
 		cmBoxHeight.setBounds(84, 63, 69, 21);
 		add(cmBoxHeight);
 		
@@ -222,7 +222,13 @@ public class ControlPanel extends JPanel{
 					
 					loopPlay = 0;
 					
-					startRunning();
+					new Thread(new Runnable() {
+						
+						@Override
+						public void run() {
+							startRunning();
+						}
+					}).start();;
 					
 				}else{
 					
@@ -270,7 +276,7 @@ public class ControlPanel extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				
 				if(dataViewFrame.isVisible())
-					return;
+					dataViewFrame.toFront();
 				else
 					dataViewFrame.setVisible(true);
 				
@@ -343,11 +349,6 @@ public class ControlPanel extends JPanel{
 			public void run() {
 				while(true){
 					dataViewFrame.setBounds(frame.getX() + frame.getWidth(), frame.getY(), 460, 416);
-					
-					if(dataViewFrame.isVisible())
-						btnShowDataFrame.setEnabled(false);
-					else
-						btnShowDataFrame.setEnabled(true);
 				}
 					
 				

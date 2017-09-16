@@ -6,18 +6,25 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
+import Bettle.File.FileManagement;
 import Bettle.model.data.ResultData;
 import Bettle.model.data.ResultDataModel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 import java.awt.event.ActionEvent;
 
 /**
@@ -31,12 +38,13 @@ public class DataViewFrame extends JFrame {
 	private JButton btnExportFile;
 	private JButton btnShowGraph;
 	
+	private ResultData resultData = null;
 	
 	String columnNames[] = { "가로 크기", "세로 크기", "소요 시간", "딱정 벌레 수", "딜레이"};
 	private JPanel panel_1;
 	private JScrollPane scrollPane;
 	private JTable table;
-	private JButton btnNewButton;
+	private JButton btnResetData;
 
 
 	/**
@@ -60,22 +68,42 @@ public class DataViewFrame extends JFrame {
 		
 		btnExportFile = new JButton("\uD30C\uC77C \uB0B4\uBCF4\uB0B4\uAE30");
 		btnExportFile.setFont(new Font("굴림", Font.BOLD, 14));
+		btnExportFile.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				//TODO 데이터 없을 경우 저장이 불가능 해야함.
+				if(resultData == null || resultData.getData().length==0 || table.getRowCount()==0)
+					return;
+				
+				JFileChooser fileChooser = new JFileChooser();
+				fileChooser.setFileFilter(new FileNameExtensionFilter("CSV File(*.csv)", "csv"));
+				fileChooser.showSaveDialog(null);
+				
+				if(fileChooser.getSelectedFile() != null)
+					new FileManagement().generateFile(fileChooser.getSelectedFile(), resultData);
+				
+				
+			}
+		});
 		panel.add(btnExportFile);
 		
 		btnShowGraph = new JButton("\uADF8\uB798\uD504 \uBCF4\uAE30");
 		btnShowGraph.setFont(new Font("굴림", Font.BOLD, 14));
 		panel.add(btnShowGraph);
 		
-		btnNewButton = new JButton("데이터 초기화");
-		btnNewButton.addActionListener(new ActionListener() {
+		btnResetData = new JButton("데이터 초기화");
+		btnResetData.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				
+				resultData.resetData();
+				setDataTable(resultData);
 				
 			}
 		});
-		btnNewButton.setFont(new Font("굴림", Font.BOLD, 14));
-		panel.add(btnNewButton);
+		btnResetData.setFont(new Font("굴림", Font.BOLD, 14));
+		panel.add(btnResetData);
 		
 		panel_1 = new JPanel();
 		contentPane.add(panel_1, BorderLayout.NORTH);
@@ -97,27 +125,31 @@ public class DataViewFrame extends JFrame {
 	 */
 	public void setDataTable(ResultData data){
 		
+		this.resultData = data;
 		
-		int length = data.getData().length;
+		int length = data.dataCount();
 		
 		Object rowData[][] = new Object[length][5];
 		
 		for(int i=0; i<length; i++){
 			
+			
+			
 			try{
 				ResultDataModel modelData = data.getData()[i];
-				Object objectData[] = {modelData.getWidth(), modelData.getHeight(), modelData.getTime(), modelData.getBeetleCount(), modelData.getDalay()};
+				
+				SimpleDateFormat formatter = new SimpleDateFormat ( "mm:ss:SSS", Locale.KOREA );
+				String resultTime = formatter.format ( modelData.getTime() );
+				
+				Object objectData[] = {modelData.getWidth(), modelData.getHeight(), resultTime, modelData.getBeetleCount(), modelData.getDalay()};
 				
 				for(int j=0; j<5; j++)
 					rowData[i][j] = objectData[j];
+				
 			}catch (Exception e){
 				//ignore
 			}
-			
-			
-			
 		}
-		 
 		
 		DefaultTableModel defaultTableModel = new DefaultTableModel(rowData, columnNames);
 		table.setModel(defaultTableModel);

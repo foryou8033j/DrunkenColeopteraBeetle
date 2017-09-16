@@ -2,6 +2,8 @@ package Bettle.model.maps;
 
 import java.awt.Color;
 
+import javax.swing.JOptionPane;
+
 /**
  * 맵의 세부 데이터 저장 클래스
  * @author Jeongsam
@@ -24,7 +26,13 @@ public class MapDataModel {
 		this.width = width;
 		this.height = height;
 		
-		visitCells = new boolean[width+1][height+1];
+		try {
+			visitCells = new boolean[width+1][height+1];
+		}catch (OutOfMemoryError e) {
+			JOptionPane.showConfirmDialog(null, "힙 메모리 초과!");
+		}
+		
+		
 		
 	}
 	

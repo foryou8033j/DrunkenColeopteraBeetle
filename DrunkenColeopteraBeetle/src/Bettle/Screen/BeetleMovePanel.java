@@ -10,17 +10,18 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Locale;
 import java.util.Random;
 
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import org.apache.commons.lang.time.StopWatch;
+
 import Bettle.model.bettle.Beetle;
 import Bettle.model.bettle.Beetle.Pos;
-import Bettle.model.maps.MapData;
 import Bettle.model.maps.MapCompartmentDesigner;
+import Bettle.model.maps.MapData;
 import Bettle.model.maps.MapDataModel;
 
 
@@ -35,7 +36,7 @@ enum DIRECTION {LEFT, RIGHT, UP, DOWN};
 public class BeetleMovePanel extends JPanel implements ActionListener
 {
 
-	Frame frame;
+	RootFrame frame;
 	
 	public final static int DOT_SIZE = 10;
 	
@@ -66,16 +67,12 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 	private boolean _end = false;
 	
 	private Timer timer;
-	private long startTime;
-	private long endTime;
-	private long defTime;
-	private long pauseTime;
 	
-	private String endTimeString = ""; 
+	private StopWatch stopWatch = null;
 	
 	private Graphics _g;
 	
-	public BeetleMovePanel(Frame frame, int boardWidth, int boardHeight, int beetleCount,  int delay)
+	public BeetleMovePanel(RootFrame frame, int boardWidth, int boardHeight, int beetleCount,  int delay)
 	{
 		this.frame = frame;
 		
@@ -117,9 +114,11 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 			beetles[i] = new Beetle(CLR_HEAD[i], B_WIDTH, B_HEIGHT);
 		}
 		
-		mapData = new MapData(B_WIDTH, B_HEIGHT);
+		mapData = new MapData(frame, B_WIDTH, B_HEIGHT);
 		
-		startTime = Calendar.getInstance().getTimeInMillis();
+		stopWatch = new StopWatch();
+		stopWatch.reset();
+		stopWatch.start();
 		
 		timer = new Timer(DELAY, this);
 		timer.setDelay(DELAY);
@@ -258,6 +257,9 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 		drawNoVisitCellCount(g, noVisitCellCount);
 		
 		if(noVisitCellCount <= 0){
+			//스탑워치를 중지한다.
+			stopWatch.stop();
+			
 			drawEndScreen(g);
 			
 			quit();
@@ -268,6 +270,9 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 	
 	private void drawEndScreen(Graphics g){
 		
+		//정확한 시간 표시를 위해 한번 더 그려준다.
+		drawTime(g);
+		
 		Font asd = new Font("", Font.BOLD, 14);
 		FontMetrics metr = getFontMetrics(asd);
 		
@@ -275,18 +280,19 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 		g.setFont(asd);
 		String msg = "End Of Cells";
 		
-		g.drawString(msg, (B_WIDTH*DOT_SIZE)/2 - metr.stringWidth(msg)/2,
-				(B_HEIGHT*DOT_SIZE) / 2 - metr.getHeight());
+		g.drawString(msg, (MapCompartmentDesigner.DRAW_MAP_SIZE * DOT_SIZE)/2 - metr.stringWidth(msg)/2,
+				(MapCompartmentDesigner.DRAW_MAP_SIZE * DOT_SIZE) / 2 - metr.getHeight());
 	}
 	
 	private void drawMiniMap(Graphics g) {
 		
+		//맵이 작을때는 미니맵을 보여주지 않는다.
 		if(B_WIDTH < 100 || B_HEIGHT < 100)
 			return;
 		
+		//미니맵의 초기 위치 설정
 		int posX = 10;
 		int posY = 40;
-		
 		
 		int drawDistance = B_WIDTH / 100;
 		
@@ -294,7 +300,6 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 		g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.6f));
 		
 		MapDataModel mapModel = mapData.getThisMap(beetles[beetleLock].getX(), beetles[beetleLock].getY());	
-		
 		
 		
 		int widthMax = B_WIDTH / 100;
@@ -370,17 +375,8 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 		
 		g.setFont(small);
 		
-		long defTime;
-		
-		if(_pause)
-			defTime = (pauseTime - startTime);
-		else
-			defTime = (Calendar.getInstance().getTimeInMillis() - startTime);
-		
 		SimpleDateFormat formatter = new SimpleDateFormat ( "mm:ss:SSS", Locale.KOREA );
-		String dTime = formatter.format ( defTime );
-		
-		endTimeString = dTime;
+		String dTime = formatter.format ( stopWatch.getTime() );
 		
 		g.drawString("경과 시간 : " + dTime,  10, metr.getHeight());
 		
@@ -479,9 +475,8 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 		
 		
 		//데이터 뷰 프레임과 결과 데이터 정보를 연동한다.
-		endTime = Calendar.getInstance().getTimeInMillis();
 		
-		frame.getData().saveData(B_WIDTH, B_HEIGHT, endTimeString, beetleCount, DELAY);
+		frame.getData().saveData(B_WIDTH, B_HEIGHT, stopWatch.getTime(), beetleCount, DELAY);
 		frame.syncWithData();
 	}
 
@@ -496,6 +491,7 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 			//이동
 			if(!_pause){
 				
+				//여기서 딱정벌레 개수만큼 쓰레드를 생성한다.
 				for(int i=0; i<beetles.length; i++){
 					
 					final int a = i;
@@ -508,6 +504,7 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 						}
 					}).start();
 					
+					//이동이 끝나면 쓰레드는 제거된다.
 				}
 					
 			}
@@ -542,7 +539,14 @@ public class BeetleMovePanel extends JPanel implements ActionListener
 	}
 	
 	public void setPause(boolean pauseStatus){
-		pauseTime = Calendar.getInstance().getTimeInMillis();
+		
+		if(stopWatch != null){
+			if(pauseStatus == true)
+				stopWatch.suspend();
+			else
+				stopWatch.resume();
+		}
+		
 		_pause = pauseStatus;
 	}
 	

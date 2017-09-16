@@ -1,13 +1,17 @@
 package Bettle.model.maps;
 
-import javax.swing.JOptionPane;
+import java.util.List;
+
+import javax.swing.SwingWorker;
+
+import Bettle.Screen.RootFrame;
 
 /**
  * 맵을 구획별로 분리하고 관리하는 클래스
  * @author Jeongsam
  *
  */
-public class MapCompartmentDesigner {
+public class MapCompartmentDesigner extends SwingWorker<MapDataModel[][], Object> {
 	
 	//어느 규격으로 맵을 분리 할지 결정한다.
 	public static int DRAW_MAP_SIZE = 50;
@@ -16,11 +20,17 @@ public class MapCompartmentDesigner {
 	private int B_HEIGHT;
 	
 	
-	public MapDataModel[][] createMaps(int width, int height) {
-
+	
+	public MapCompartmentDesigner(final RootFrame frame, int width, int height) {
 		
 		B_WIDTH = width;
 		B_HEIGHT = height;
+	}
+	
+	@Override
+	protected MapDataModel[][] doInBackground() throws Exception {
+
+		
 		
 		//전체 크기를 규격별로 나눈다
 		int countX = B_WIDTH / DRAW_MAP_SIZE;
@@ -51,13 +61,28 @@ public class MapCompartmentDesigner {
 				if(leastWidth > 0 && leastHeight > 0 && i == countX-1 && j == countY-1)
 					models[i][j] = new MapDataModel(i * DRAW_MAP_SIZE, j * DRAW_MAP_SIZE, leastWidth, leastHeight);
 				
-				System.out.println("MapLoaded " + progress++ + "/" + countX*countY);
+				float result = (float) progress++ / (float) (countX * countY) * 100;
+				setProgress(Integer.valueOf((int) result));
+				
+				publish(result);
+				
+				
 			}
 		}
 		
-		return models;
+		setProgress(100);
 		
+		return models;
 	}
+	
+	
+	
+	@Override
+	protected void done() {
+		
+		super.done();
+	}
+	
 	
 	
 	
