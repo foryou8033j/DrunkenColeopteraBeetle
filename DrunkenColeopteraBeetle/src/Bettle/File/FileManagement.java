@@ -128,6 +128,8 @@ public class FileManagement {
 			
 			JOptionPane.showMessageDialog(null, messageString, "저장 성공", JOptionPane.INFORMATION_MESSAGE);
 			
+			reader.close();
+			
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
