@@ -36,6 +36,7 @@ public class DataViewFrame extends JFrame {
 	private JButton btnExportFile;
 	private JButton btnShowGraph;
 	
+	private ResultData resultData = null;
 	
 	String columnNames[] = { "가로 크기", "세로 크기", "소요 시간", "딱정 벌레 수", "딜레이"};
 	private JPanel panel_1;
@@ -70,7 +71,8 @@ public class DataViewFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				
+				if(resultData == null || resultData.getData().length==0 || table.getRowCount()==0)
+					return;
 				
 				JFileChooser fileChooser = new JFileChooser();
 				fileChooser.setFileFilter(new FileNameExtensionFilter("CSV File(*.csv)", "csv"));
@@ -119,6 +121,7 @@ public class DataViewFrame extends JFrame {
 	 */
 	public void setDataTable(ResultData data){
 		
+		this.resultData = data;
 		
 		int length = data.getData().length;
 		
