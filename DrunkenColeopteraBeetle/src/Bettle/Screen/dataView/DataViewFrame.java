@@ -97,7 +97,8 @@ public class DataViewFrame extends JFrame {
 		btnResetData.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				
+				resultData.resetData();
+				setDataTable(resultData);
 				
 			}
 		});
@@ -126,11 +127,13 @@ public class DataViewFrame extends JFrame {
 		
 		this.resultData = data;
 		
-		int length = data.getData().length;
+		int length = data.dataCount();
 		
 		Object rowData[][] = new Object[length][5];
 		
 		for(int i=0; i<length; i++){
+			
+			
 			
 			try{
 				ResultDataModel modelData = data.getData()[i];
@@ -142,6 +145,7 @@ public class DataViewFrame extends JFrame {
 				
 				for(int j=0; j<5; j++)
 					rowData[i][j] = objectData[j];
+				
 			}catch (Exception e){
 				//ignore
 			}
