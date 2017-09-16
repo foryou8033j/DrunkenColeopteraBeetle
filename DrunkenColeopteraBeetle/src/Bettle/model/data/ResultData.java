@@ -26,7 +26,7 @@ public class ResultData{
 	 * @param count 딱정벌레 갯수
 	 * @param delay 사용한 딜레이 시간
 	 */
-	public void saveData(int width, int height, String time, int count, int delay){
+	public void saveData(int width, int height, long time, int count, int delay){
 		
 		model[dataCount] = new ResultDataModel(width, height, time, count, delay);
 		
