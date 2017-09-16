@@ -15,7 +15,7 @@ import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
-import Bettle.Screen.Controller.File.FileManagement;
+import Bettle.File.FileManagement;
 import Bettle.model.data.ResultData;
 import Bettle.model.data.ResultDataModel;
 import javax.swing.JScrollBar;
@@ -71,6 +71,7 @@ public class DataViewFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				//TODO 데이터 없을 경우 저장이 불가능 해야함.
 				if(resultData == null || resultData.getData().length==0 || table.getRowCount()==0)
 					return;
 				
@@ -79,7 +80,7 @@ public class DataViewFrame extends JFrame {
 				fileChooser.showSaveDialog(null);
 				
 				if(fileChooser.getSelectedFile() != null)
-					new FileManagement().generateFile(fileChooser.getSelectedFile());
+					new FileManagement().generateFile(fileChooser.getSelectedFile(), resultData);
 				
 				
 			}
@@ -138,11 +139,7 @@ public class DataViewFrame extends JFrame {
 			}catch (Exception e){
 				//ignore
 			}
-			
-			
-			
 		}
-		 
 		
 		DefaultTableModel defaultTableModel = new DefaultTableModel(rowData, columnNames);
 		table.setModel(defaultTableModel);
