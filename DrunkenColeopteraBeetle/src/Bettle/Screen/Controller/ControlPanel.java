@@ -79,7 +79,7 @@ public class ControlPanel extends JPanel{
 		cmBoxWidth.setBounds(84, 35, 69, 21);
 		add(cmBoxWidth);
 		
-		JLabel lblHeight = new JLabel("\uC138\uB85C");
+		JLabel lblHeight = new JLabel("세로");
 		lblHeight.setBounds(22, 66, 31, 15);
 		add(lblHeight);
 		
@@ -88,7 +88,7 @@ public class ControlPanel extends JPanel{
 		cmBoxHeight.setBounds(84, 63, 69, 21);
 		add(cmBoxHeight);
 		
-		JLabel lblLoop = new JLabel("\uBC18\uBCF5 \uC218");
+		JLabel lblLoop = new JLabel("반복 수");
 		lblLoop.setBounds(22, 94, 45, 15);
 		add(lblLoop);
 		
@@ -97,7 +97,7 @@ public class ControlPanel extends JPanel{
 		cmBoxLoop.setBounds(84, 91, 69, 21);
 		add(cmBoxLoop);
 		
-		JLabel lblBeetleConf = new JLabel("\uB531\uC815\uBC8C\uB808 \uC124\uC815");
+		JLabel lblBeetleConf = new JLabel("딱정벌레 설정");
 		lblBeetleConf.setFont(new Font("굴림", Font.BOLD, 13));
 		lblBeetleConf.setBounds(12, 134, 176, 15);
 		add(lblBeetleConf);
@@ -106,13 +106,13 @@ public class ControlPanel extends JPanel{
 		separator.setBounds(12, 154, 141, 15);
 		add(separator);
 		
-		JLabel lblBeetleCount = new JLabel("\uB9C8\uB9AC \uC218");
+		JLabel lblBeetleCount = new JLabel("마리 수");
 		lblBeetleCount.setHorizontalAlignment(SwingConstants.LEFT);
 		lblBeetleCount.setBounds(22, 162, 45, 15);
 		add(lblBeetleCount);
 		
 		cmBoxBeetleCount = new JComboBox();
-		cmBoxBeetleCount.setToolTipText("\uB9F5\uC744 \uC21C\uD68C\uD558\uB294 \uB531\uC815\uBC8C\uB808\uC758 \uC218\uB97C \uACB0\uC815\uD569\uB2C8\uB2E4");
+		cmBoxBeetleCount.setToolTipText("맵을 무작위 순회하는 딱정벌레의 수를 결정합니다.");
 		
 		String[] maxBeetleCountArrayString = new String[MAX_COUNT_OF_BEETLES];
 		for(int i=0; i<MAX_COUNT_OF_BEETLES; i++) 
@@ -122,13 +122,13 @@ public class ControlPanel extends JPanel{
 		cmBoxBeetleCount.setBounds(84, 159, 69, 21);
 		add(cmBoxBeetleCount);
 		
-		JLabel lblDelay = new JLabel("\uB51C\uB808\uC774");
+		JLabel lblDelay = new JLabel("딜레이");
 		lblDelay.setHorizontalAlignment(SwingConstants.LEFT);
 		lblDelay.setBounds(22, 190, 45, 15);
 		add(lblDelay);
 		
 		cmBoxDelay = new JComboBox();
-		cmBoxDelay.setToolTipText("\uB531\uC815\uBC8C\uB808\uAC00 \uBB34\uC791\uC704 \uBC29\uD5A5\uC744 \uACB0\uC815\uD558\uB294\uB370 \uAC78\uB9AC\uB294 \uC2DC\uAC04\uC744 \uC9C0\uC815\uD569\uB2C8\uB2E4.");
+		cmBoxDelay.setToolTipText("딱정벌레가 다음 무작위 방향을 결정하는데 소요되는 시간을 결정합니다.");
 		cmBoxDelay.setModel(new DefaultComboBoxModel(new String[] {"0", "10", "20", "50", "100", "200"}));
 		cmBoxDelay.setBounds(84, 187, 69, 21);
 		add(cmBoxDelay);
@@ -137,13 +137,13 @@ public class ControlPanel extends JPanel{
 		separator_2.setBounds(12, 222, 141, 15);
 		add(separator_2);
 		
-		JLabel lblLookBeetleTitle = new JLabel("\uD604\uC7AC \uC9C0\uCF1C\uBCF4\uB294 \uB531\uC815\uC774");
+		JLabel lblLookBeetleTitle = new JLabel("현재 지켜보는 딱정이");
 		lblLookBeetleTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLookBeetleTitle.setFont(new Font("굴림", Font.BOLD, 13));
 		lblLookBeetleTitle.setBounds(12, 237, 141, 15);
 		add(lblLookBeetleTitle);
 		
-		lblLockBeetleNumber = new JLabel("");
+		lblLockBeetleNumber = new JLabel("-");
 		lblLockBeetleNumber.setFont(new Font("굴림", Font.BOLD, 13));
 		lblLockBeetleNumber.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLockBeetleNumber.setBounds(12, 262, 141, 15);
@@ -196,7 +196,7 @@ public class ControlPanel extends JPanel{
 		separator_3.setBounds(12, 347, 141, 15);
 		add(separator_3);
 		
-		JLabel lblCurrentProgress = new JLabel("\uD604\uC7AC \uC9C4\uD589\uB3C4");
+		JLabel lblCurrentProgress = new JLabel("현재 진행도");
 		lblCurrentProgress.setHorizontalAlignment(SwingConstants.LEFT);
 		lblCurrentProgress.setBounds(22, 358, 166, 15);
 		add(lblCurrentProgress);
@@ -205,7 +205,7 @@ public class ControlPanel extends JPanel{
 		progressCurrent.setBounds(42, 379, 111, 14);
 		add(progressCurrent);
 		
-		JLabel lblWhoreProgress = new JLabel("\uC804\uCCB4 \uC9C4\uD589\uB3C4");
+		JLabel lblWhoreProgress = new JLabel("전체 진행도");
 		lblWhoreProgress.setHorizontalAlignment(SwingConstants.LEFT);
 		lblWhoreProgress.setBounds(22, 403, 166, 15);
 		add(lblWhoreProgress);
@@ -214,7 +214,7 @@ public class ControlPanel extends JPanel{
 		progressWhore.setBounds(42, 424, 111, 14);
 		add(progressWhore);
 		
-		btnAction = new JButton("\uC2E4\uD589");
+		btnAction = new JButton("실행");
 		btnAction.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -255,7 +255,7 @@ public class ControlPanel extends JPanel{
 		btnAction.setBounds(12, 448, 141, 25);
 		add(btnAction);
 		
-		btnReset = new JButton("\uC911\uC9C0/\uCD08\uAE30\uD654");
+		btnReset = new JButton("중지/초기화");
 		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				stopAndClearRunning();
@@ -271,7 +271,7 @@ public class ControlPanel extends JPanel{
 		btnReset.setBounds(12, 476, 141, 25);
 		add(btnReset);
 		
-		btnShowDataFrame = new JButton("\uB370\uC774\uD130 \uBCF4\uAE30");
+		btnShowDataFrame = new JButton("데이터 보기");
 		btnShowDataFrame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
