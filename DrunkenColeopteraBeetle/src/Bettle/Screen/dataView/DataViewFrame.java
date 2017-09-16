@@ -2,31 +2,30 @@ package Bettle.Screen.dataView;
 
 import java.awt.BorderLayout;
 import java.awt.Dialog.ModalExclusionType;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
-import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
 import Bettle.File.FileManagement;
+import Bettle.Screen.Graph.GraphViewFrame;
 import Bettle.model.data.ResultData;
 import Bettle.model.data.ResultDataModel;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Locale;
-import java.awt.event.ActionEvent;
 
 /**
  * 결과 데이터 출력 프레임 클래스
@@ -47,6 +46,7 @@ public class DataViewFrame extends JFrame {
 
 	
 	private ResultData resultData = null;
+	private GraphViewFrame graphFrame = null;
 
 	/**
 	 * Create the frame.
@@ -95,6 +95,17 @@ public class DataViewFrame extends JFrame {
 		
 		btnShowGraph = new JButton("그래프 보기");
 		btnShowGraph.setFont(new Font("굴림", Font.BOLD, 14));
+		btnShowGraph.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				graphFrame = new GraphViewFrame(resultData);
+				graphFrame.setLocationRelativeTo(rootPane);
+				graphFrame.setSize(800, 400);
+				graphFrame.setMinimumSize(new Dimension(800, 400));
+				
+			}
+		});
 		panel.add(btnShowGraph);
 		
 		btnResetData = new JButton("데이터 삭제");
@@ -141,9 +152,6 @@ public class DataViewFrame extends JFrame {
 		Object rowData[][] = new Object[length][5];
 		
 		for(int i=0; i<length; i++){
-			
-			
-			
 			try{
 				ResultDataModel modelData = data.getData()[i];
 				
@@ -162,6 +170,11 @@ public class DataViewFrame extends JFrame {
 		
 		DefaultTableModel defaultTableModel = new DefaultTableModel(rowData, columnNames);
 		table.setModel(defaultTableModel);
+		
+		if(graphFrame != null)
+			graphFrame.reDrawGraph(resultData);
+			
+		
 		
 	}
 
