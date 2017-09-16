@@ -276,7 +276,7 @@ public class ControlPanel extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				
 				if(dataViewFrame.isVisible())
-					return;
+					dataViewFrame.toFront();
 				else
 					dataViewFrame.setVisible(true);
 				
@@ -349,11 +349,6 @@ public class ControlPanel extends JPanel{
 			public void run() {
 				while(true){
 					dataViewFrame.setBounds(frame.getX() + frame.getWidth(), frame.getY(), 460, 416);
-					
-					if(dataViewFrame.isVisible())
-						btnShowDataFrame.setEnabled(false);
-					else
-						btnShowDataFrame.setEnabled(true);
 				}
 					
 				
