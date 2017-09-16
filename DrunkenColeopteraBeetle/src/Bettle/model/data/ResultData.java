@@ -47,7 +47,7 @@ public class ResultData{
 	 * @return
 	 */
 	public int dataCount(){
-		return model.length;
+		return dataCount;
 	}
 	
 	/**
@@ -55,6 +55,7 @@ public class ResultData{
 	 */
 	public void resetData(){
 		model = new ResultDataModel[100];
+		dataCount=0;
 	}
 	
 	
