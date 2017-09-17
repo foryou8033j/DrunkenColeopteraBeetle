@@ -55,6 +55,7 @@ public class MapData {
 		dialog = new ProgressbarDialog(getFrame(), "데이터 초기화 중...", "데이터 초기화 준비중");
 		dialog.setTitle("맵 데이터 구성 중...");
 		
+		//맵 데이터를 분리한다.
 		MapCompartmentDesigner designerTask = new MapCompartmentDesigner(frame, mapWidth, mapHeight);
 		
 		designerTask.addPropertyChangeListener(
@@ -81,10 +82,8 @@ public class MapData {
 			this.models = designerTask.get();
 			
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ExecutionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -107,7 +106,6 @@ public class MapData {
 	 * @param x 좌표
 	 * @param y 좌표
 	 */
-	//TODO 좌표 값 -1 오류 발생, 충돌 연산 불량 추정 170910:114100
 	public synchronized void setThisCellVisit(int x, int y) {
 		
 		try{
@@ -115,12 +113,8 @@ public class MapData {
 			if(getThisMap(x, y).setThisCellVisit(x, y))
 				countOfNoVisitCells--;
 			
-			//beetleVisitCell[x][y] = true;
-			
 		}catch (Exception e) {
 			//ignore
-			if (x < 0 || y <0 ) 
-				System.out.println(x + " " + y);
 		}
 		
 		
@@ -180,25 +174,32 @@ public class MapData {
 			
 		}catch (Exception e)
 		{
-			//TODO 170915 좌표 벗어나는 오류 원인 해결 필요
-			/*e.printStackTrace();
-			System.out.println(x + " " + y);
-			System.out.println(boardX + " " + boardY);
-			JOptionPane.showConfirmDialog(null, "오류");*/
-			System.exit(0);
+			//ignore
 		}
 		return models[boardX][boardY];
 
 	}
 	
+	/**
+	 * MapDataModel 를 반환한다.
+	 * @return {@link MapDataModel}
+	 */
 	public MapDataModel[][] getMapModels(){
 		return models;
 	}
 	
+	/**
+	 * RootFrame 을 반환한다.
+	 * @return {@link RootFrame}
+	 */
 	private RootFrame getFrame(){
 		return frame;
 	}
 	
+	/**
+	 * ProgressBar Dialog 를 반환한다.
+	 * @return {@link ProgressbarDialog}
+	 */
 	private ProgressbarDialog getDialog(){
 		return dialog;
 	}

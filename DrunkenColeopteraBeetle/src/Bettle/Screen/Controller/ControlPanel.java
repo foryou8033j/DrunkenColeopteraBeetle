@@ -32,8 +32,10 @@ public class ControlPanel extends JPanel{
 	
 	private RootFrame frame = null;
 	
-	private int MAX_COUNT_OF_BEETLES = 128;
+	//최대 지원 딱정벌레 개수
+	private int MAX_COUNT_OF_BEETLES = 1024;
 	
+	//DataViewFrame 객체를 초기화한다.
 	private DataViewFrame dataViewFrame = new DataViewFrame();
 	
 	private JButton btnAction;
@@ -51,10 +53,12 @@ public class ControlPanel extends JPanel{
 	private JComboBox cmBoxLoop;
 	private JToggleButton tglbtnDebug;
 	
+	//반복 횟수 저장
 	private int loopPlay = 0;
 	
 	/**
-	 * Create the panel.
+	 * 컨트롤 패널을 초기화한다.
+	 * @param beetleFrame {@link RootFrame}
 	 */
 	public ControlPanel(RootFrame beetleFrame) {
 		setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -147,13 +151,12 @@ public class ControlPanel extends JPanel{
 		lblLockBeetleNumber.setFont(new Font("굴림", Font.BOLD, 13));
 		lblLockBeetleNumber.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLockBeetleNumber.setBounds(12, 262, 141, 15);
-		lblLockBeetleNumber.setBackground(BeetleMovePanel.CLR_BACKGROUND);
 		add(lblLockBeetleNumber);
 		
 		btnBeetlePre = new JButton("\u25C0");
 		btnBeetlePre.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				//이전 딱정벌레 관찰
 				int currentViewBeetle = frame.getBeetleScreen().getCurrentViewBeetle();
 				int beetleCount = Integer.valueOf((String) cmBoxBeetleCount.getSelectedItem());
 				
@@ -174,6 +177,7 @@ public class ControlPanel extends JPanel{
 		btnBeetleNext = new JButton("\u25B6");
 		btnBeetleNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//이후 딱정벌레 관찰
 				
 				int currentViewBeetle = frame.getBeetleScreen().getCurrentViewBeetle();
 				int beetleCount = Integer.valueOf((String) cmBoxBeetleCount.getSelectedItem());
@@ -217,6 +221,7 @@ public class ControlPanel extends JPanel{
 		btnAction = new JButton("실행");
 		btnAction.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				//실행 버튼을 눌렀을때의 로직
 				
 				if(frame.getBeetleScreen() == null){
 					
@@ -228,7 +233,7 @@ public class ControlPanel extends JPanel{
 						public void run() {
 							startRunning();
 						}
-					}).start();;
+					}).start();
 					
 				}else{
 					
@@ -240,14 +245,9 @@ public class ControlPanel extends JPanel{
 							frame.getBeetleScreen().setPause(true);
 						}
 						
-						
-						
 					}
 					
-					
 				}
-				
-				
 				
 			}
 		});
@@ -258,8 +258,12 @@ public class ControlPanel extends JPanel{
 		btnReset = new JButton("중지/초기화");
 		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//중지/초기화 버튼을 눌렀을때의 로직
+				
+				//모든 데이터를 초기화한다.
 				stopAndClearRunning();
 				
+				//프로그레스 바 정보를 리셋한다.
 				progressWhore.setMaximum(100);
 				progressCurrent.setMaximum(100);
 				progressWhore.setValue(0);
@@ -274,6 +278,9 @@ public class ControlPanel extends JPanel{
 		btnShowDataFrame = new JButton("데이터 보기");
 		btnShowDataFrame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//데이터 프레임 표시
+				//이미 표시중인 경우에는 윈도우 최상단으로 이동
+				
 				
 				if(dataViewFrame.isVisible())
 					dataViewFrame.toFront();
@@ -310,7 +317,7 @@ public class ControlPanel extends JPanel{
 		tglbtnDebug.setBounds(128, 0, 37, 23);
 		add(tglbtnDebug);
 		
-		gameChangeListener();
+		beetleMovePanelChangeListener();
 		cmBoxHeight.setEnabled(false);
 		
 		cmBoxWidth.addItemListener(new ItemListener() {
@@ -329,11 +336,17 @@ public class ControlPanel extends JPanel{
 		
 	}
 	
+	/**
+	 * 데이터 뷰 프레임과 결과 데이터 정보를 연동한다.
+	 */
 	public void syncWithData(){
-		//데이터 뷰 프레임과 결과 데이터 정보를 연동한다.
 		dataViewFrame.setDataTable(frame.getData());
 	}
 	
+	/**
+	 * 사용자 설정 컨트롤러의 사용 여부를 결정한다.
+	 * @param set {@link boolean}
+	 */
 	private void setControllersUseable(boolean set){
 		  cmBoxBeetleCount.setEnabled(set);
 		  cmBoxDelay.setEnabled(set);
@@ -342,6 +355,9 @@ public class ControlPanel extends JPanel{
 		  cmBoxLoop.setEnabled(set);
 	}
 	
+	/**
+	 * DataViewFrame 이 RootFrame 옆에 붙어 있게 한다.
+	 */
 	private void dataViewFrameLocationChangeListener(){
 		new Thread(new Runnable() {
 			
@@ -356,6 +372,9 @@ public class ControlPanel extends JPanel{
 		}).start();
 	}
 	
+	/**
+	 * BeetleMovePanel 의 로직 시작을 관리한다.
+	 */
 	private void startRunning(){
 		int width = Integer.valueOf((String) cmBoxWidth.getSelectedItem());
 		int height = Integer.valueOf((String) cmBoxHeight.getSelectedItem());
@@ -369,6 +388,9 @@ public class ControlPanel extends JPanel{
 		lblLockBeetleNumber.setForeground(frame.getBeetleScreen().getCurrentViewBeetleColor());
 	}
 	
+	/**
+	 * 모든 동작을 중지하고 설정 가능한 상태로 변경한다.
+	 */
 	private void stopAndClearRunning(){
 		frame.removeBettleScreen();
 		setControllersUseable(true);
@@ -378,6 +400,9 @@ public class ControlPanel extends JPanel{
 		lblLockBeetleNumber.setForeground(Color.BLACK);
 	}
 	
+	/**
+	 * 프로그레스 바의 데이터를 변경한다.
+	 */
 	private void setProgressFromBoard(){
 		
 		int maxCells = frame.getBeetleScreen().getMaxCells();
@@ -389,7 +414,7 @@ public class ControlPanel extends JPanel{
 	/**
 	 * 컴포넌트의 상태 변화를 관리한다.
 	 */
-	private void gameChangeListener(){
+	private void beetleMovePanelChangeListener(){
 		new Thread(new Runnable() {
 			
 			@Override
@@ -451,7 +476,7 @@ public class ControlPanel extends JPanel{
 						btnAction.setEnabled(true);
 						btnReset.setEnabled(false);
 						setControllersUseable(true);
-						frame.showMeesageLabel("딱정벌레가 없또용 > v <");
+						frame.showMeesageLabel("딱정벌레가 집에 갔습니다");
 					}
 					
 					repaint();

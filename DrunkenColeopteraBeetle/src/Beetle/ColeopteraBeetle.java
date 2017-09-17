@@ -13,11 +13,14 @@ public class ColeopteraBeetle {
 	
 	
 	public static void main(String[] args) {
+		
+		//Swing Que 안에서 시작한다.
 		SwingUtilities.invokeLater(new Runnable() {
 			
 			@Override
 			public void run() {
 				
+				//RootFrame을 띄워준다.
 				new RootFrame();
 				
 			}

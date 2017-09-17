@@ -48,6 +48,11 @@ import org.jfree.ui.TextAnchor;
 import Bettle.model.data.ResultData;
 import Bettle.model.data.ResultDataModel;
 
+/**
+ * 그래프를 보여주는 프레임
+ * @author Jeongsam
+ *
+ */
 public class GraphViewFrame extends JFrame{
 
 	ChartPanel chartPanel = null;
@@ -59,10 +64,14 @@ public class GraphViewFrame extends JFrame{
 	
 	private ResultData resultData;
 	
+	/**
+	 * 레이아웃 초기화
+	 * @param resultData {@link ResultData}
+	 */
 	public GraphViewFrame(ResultData resultData) {
 		
 		super("데이터 그래프");
-		this.resultData = resultData;
+		this.resultData = resultData; //결과 데이터와 연동한다.
 		
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		
@@ -97,7 +106,7 @@ public class GraphViewFrame extends JFrame{
 		chckbxMapSize = new JCheckBox("맵 크기");
 		chckbxMapSize.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				//체크 박스 선택시 그래프를 다시 그린다.
 				reDrawGraph(getResultData());
 			}
 		});
@@ -108,7 +117,7 @@ public class GraphViewFrame extends JFrame{
 		chckbxBeetleCounts = new JCheckBox("딱정 벌레 수");
 		chckbxBeetleCounts.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				//체크 박스 선택시 그래프를 다시 그린다.
 				reDrawGraph(getResultData());
 			}
 		});
@@ -119,6 +128,7 @@ public class GraphViewFrame extends JFrame{
 		chckbxResultTime = new JCheckBox("소요 시간");
 		chckbxResultTime.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//체크 박스 선택시 그래프를 다시 그린다.
 				reDrawGraph(getResultData());
 			}
 		});
@@ -149,12 +159,13 @@ public class GraphViewFrame extends JFrame{
 			@Override
 			public void itemStateChanged(ItemEvent e) {
 				if (e.getStateChange() == ItemEvent.SELECTED) {
-					
+					//한가지 데이터만 변경 가능해야 하므로, 딱정벌레 갯수 수정을 비활성화한다.
 					if(!cmBoxMapSize.getSelectedItem().equals("전체보기"))
 						cmBoxBeetleCounts.setEnabled(false);
 					else
 						cmBoxBeetleCounts.setEnabled(true);
 					
+					//기준 데이터 변경 시 그래프를 다시 그린다.
 					doDrawGraph(getResultData());
 			       }
 			}
@@ -168,11 +179,13 @@ public class GraphViewFrame extends JFrame{
 			public void itemStateChanged(ItemEvent e) {
 				if (e.getStateChange() == ItemEvent.SELECTED) {
 					
+					//한가지 데이터만 변경 가능해야 하므로, 맵크기 수정을 비활성화한다.
 					if(!cmBoxBeetleCounts.getSelectedItem().equals("전체보기"))
 						cmBoxMapSize.setEnabled(false);
 					else
 						cmBoxMapSize.setEnabled(true);
 					
+					//기준 데이터 변경 시 그래프를 다시 그린다.
 					doDrawGraph(getResultData());
 			     }
 			}
@@ -188,30 +201,49 @@ public class GraphViewFrame extends JFrame{
 		chartPanel = new ChartPanel(getChart(resultData));
 		getContentPane().add(chartPanel, BorderLayout.CENTER);
 		
+		//그래프를 그린다.
 		reDrawGraph(resultData);
 		
 		show();
 		
 	}
 	
+	/**
+	 * 결과 데이터를 반환한다.
+	 * @return {@link ResultData}
+	 */
 	private ResultData getResultData(){
 		return this.resultData;
 	}
 	
+	/**
+	 * 그래프를 다시 그려준다.
+	 * @param resultData
+	 */
 	public void reDrawGraph(ResultData resultData){
 		
-		makeStringArray(resultData);
+		//콤보박스 데이터를 정리한다.
+		makeComboBoxDataArray(resultData);
 		
+		//그래프를 그린다.
 		doDrawGraph(resultData);
 		
 	}
 	
+	/**
+	 * 그래프를 그려준다.
+	 * @param resultData
+	 */
 	private void doDrawGraph(ResultData resultData){
 		chartPanel.removeAll();
 		chartPanel.setChart(getChart(resultData));
 	}
 	
-	private void makeStringArray(ResultData resultData){
+	/**
+	 * 컴보박스에서 사용되는 데이터를 정리한다.
+	 * @param resultData {@link ResultData}
+	 */
+	private void makeComboBoxDataArray(ResultData resultData){
 		
 		cmBoxMapSize.removeAllItems();
 		cmBoxBeetleCounts.removeAllItems();
@@ -244,12 +276,17 @@ public class GraphViewFrame extends JFrame{
 		
 	}
 	
+	/**
+	 * 차트 데이터를 생성한다.
+	 * @param resultData {@link ResultData}
+	 * @return {@link JFreeChart}
+	 */
 	public JFreeChart getChart(ResultData resultData) {
 	      
         // 데이터 생성
-        DefaultCategoryDataset dataset1 = new DefaultCategoryDataset();          // bar chart 1
-        DefaultCategoryDataset dataset12 = new DefaultCategoryDataset();         // bar chart 2
-        DefaultCategoryDataset dataset2 = new DefaultCategoryDataset();          // line chart 1
+        DefaultCategoryDataset dataset1 = new DefaultCategoryDataset();	// bar chart 1
+        DefaultCategoryDataset dataset12 = new DefaultCategoryDataset();	// bar chart 2
+        DefaultCategoryDataset dataset2 = new DefaultCategoryDataset();	 // line chart 1
  
         
         int length = resultData.dataCount();
@@ -342,7 +379,7 @@ public class GraphViewFrame extends JFrame{
         plot.setRangeGridlinesVisible(true);                       // X축 가이드 라인 표시여부
         plot.setDomainGridlinesVisible(true);                      // Y축 가이드 라인 표시여부
  
-        // 렌더링 순서 정의 : dataset 등록 순서대로 렌더링 ( 즉, 먼저 등록한게 아래로 깔림 )
+        // 렌더링 순서 정의
         plot.setDatasetRenderingOrder(DatasetRenderingOrder.FORWARD);
        
         // X축 세팅
@@ -356,10 +393,8 @@ public class GraphViewFrame extends JFrame{
        
         // 세팅된 plot을 바탕으로 chart 생성
         final JFreeChart chart = new JFreeChart(plot);
-//        chart.setTitle("Overlaid Bar Chart"); // 차트 타이틀
-//        TextTitle copyright = new TextTitle("JFreeChart WaferMapPlot", new Font("SansSerif", Font.PLAIN, 9));
-//        copyright.setHorizontalAlignment(HorizontalAlignment.RIGHT);
-//        chart.addSubtitle(copyright);  // 차트 서브 타이틀
+        
+        // 차트 반환
         return chart;
     }
 }

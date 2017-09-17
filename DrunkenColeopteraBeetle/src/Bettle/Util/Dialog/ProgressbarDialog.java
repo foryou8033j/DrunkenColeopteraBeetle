@@ -12,11 +12,19 @@ import java.awt.Color;
 import javax.swing.JProgressBar;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+
+import javafx.scene.control.ProgressBar;
+
 import java.awt.Rectangle;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * {@link ProgressBar} 에 제목과 설명, 강제종료 버튼이 있는 Dialog를 정의하는 클래스
+ * @author Jeongsam
+ *
+ */
 public class ProgressbarDialog extends JDialog{
 	
 	
@@ -25,6 +33,12 @@ public class ProgressbarDialog extends JDialog{
 	private JProgressBar progressBar;
 	private JButton btnNewButton;
 	
+	/**
+	 * 프레임 레이아웃을 초기화한다.
+	 * @param frame {@link JFrame}
+	 * @param title {@link String}
+	 * @param contents {@link String}
+	 */
 	public ProgressbarDialog(JFrame frame, String title, String contents) {
 		
 		super(frame);
@@ -43,6 +57,11 @@ public class ProgressbarDialog extends JDialog{
 		setComponents(title, contents);
 	}
 	
+	/**
+	 * 컴포넌트 레이아웃을 초기화한다.
+	 * @param title {@link String}
+	 * @param contents {@link String}
+	 */
 	private void setComponents(String title, String contents){
 		
 		label = new JLabel("LabelTitle");
@@ -81,14 +100,26 @@ public class ProgressbarDialog extends JDialog{
 		repaint();
 	}
 	
+	/**
+	 * TitleText 를 설정한다.
+	 * @param title {@link String}
+	 */
 	public void setTitleText(String title){
 		label.setText(title);
 	}
 	
+	/**
+	 * ContentsText 를 설정한다.
+	 * @param contents {@link String}
+	 */
 	public void setContentsText(String contents){
 		label_1.setText(contents);
 	}
 	
+	/**
+	 * {@link ProgressBar} 를 반환한다.
+	 * @return {@link ProgressBar}
+	 */
 	public JProgressBar getProgressBar(){
 		return progressBar;
 	}

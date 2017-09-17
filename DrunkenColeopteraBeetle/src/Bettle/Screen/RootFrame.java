@@ -22,6 +22,8 @@ public class RootFrame extends JFrame {
 	
 	private ResultData data;
 	
+	private final int DOT_SIZE = 10;	//여기서 public static 으로 써도 되지만.. 전역변수 사용불가
+	
 	private JLabel messageLabel = new JLabel("");
 	
 	public RootFrame() {
@@ -29,7 +31,7 @@ public class RootFrame extends JFrame {
 		setTitle("술취한 딱정벌레 - 20140636 서정삼");
 		setVisible(true);
 		setResizable(false);
-		setMinimumSize(new Dimension(50*BeetleMovePanel.DOT_SIZE + 210, 560));
+		setMinimumSize(new Dimension(50*DOT_SIZE + 210, 560));
 		
 		//JFrame을 종료 할 때 프로세서에 남지 않게 종료하도록 지시
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -64,15 +66,22 @@ public class RootFrame extends JFrame {
 		lblNewLabel.setBounds(181, 546, 511, 24);
 		getContentPane().add(lblNewLabel);
 		
-		setSize(new Dimension(50*BeetleMovePanel.DOT_SIZE + 210, 610));
+		setSize(new Dimension(50*DOT_SIZE + 210, 610));
 
 	}
 	
+	/**
+	 * 딱정 벌레 패널을 초기화한다.
+	 * @param width 가로크기
+	 * @param height 세로크기
+	 * @param beetles 딱정벌레 수
+	 * @param delay 딜레이 값
+	 */
 	public void initBettleScreen(int width, int height, int beetles, int delay){
 		
 		if(screen == null){
 			screen = new BeetleMovePanel(this, width, height,beetles, delay);
-			screen.setBounds(185, 10, width*BeetleMovePanel.DOT_SIZE, height*BeetleMovePanel.DOT_SIZE);
+			screen.setBounds(185, 10, width*DOT_SIZE, height*DOT_SIZE);
 			getContentPane().add(screen);
 		}else{
 			removeBettleScreen();
@@ -81,12 +90,14 @@ public class RootFrame extends JFrame {
 		
 	}
 	
+	/**
+	 * 현재 딱정벌레 패널을 제거한다.
+	 */
 	public void removeBettleScreen(){
 		try{
 			screen.setRunning(false);
 			getContentPane().remove(screen);
 			screen = null;
-			
 			
 			repaint();
 			
@@ -95,25 +106,36 @@ public class RootFrame extends JFrame {
 		}
 	}
 	
+	/**
+	 * 딱정벌레 패널을 반환한다.
+	 * @return {@link BeetleMovePanel}
+	 */
 	public BeetleMovePanel getBeetleScreen(){
 		return screen;
 	}
 	
+	/**
+	 * 메세지 라벨을 보여준다.
+	 * @param str {@link String}
+	 */
 	public void showMeesageLabel(String str){
 		messageLabel.setVisible(true);
 		messageLabel.setText(str);
 	}
 	
+	/**
+	 * 메세지 라벨을 숨긴다.
+	 */
 	public void hideMessageLabel(){
 		messageLabel.setVisible(false);
 	}
 	
+	/**
+	 * 결과 데이터와 컨트롤러를 동기화한다.
+	 */
 	public void syncWithData(){
-		
 		controller.syncWithData();
-		
 	}
-	
 	
 	/**
 	 * 데이터 저장 객체를 반환한다.

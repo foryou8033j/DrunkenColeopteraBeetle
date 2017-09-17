@@ -26,6 +26,11 @@ import Bettle.model.data.ResultDataModel;
 public class FileManagement {
 
 	
+	/**
+	 * 파일을 생성하고 저장한다.
+	 * @param saveFile 저장 파일 객체
+	 * @param resultDatas 저장 될 결과 데이터
+	 */
 	public void generateFile(File saveFile, ResultData resultDatas){
 		
 		//사용자가 확장자를 붙였을 때 제거한다.
@@ -33,20 +38,11 @@ public class FileManagement {
 		
 		String csvFilePath = saveFile.getPath() + ".csv";
 		
-		/*if(!saveFile.exists()){
-			try {
-				saveFile.createNewFile();
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		}*/
-			
-		
 		int length = resultDatas.dataCount();
 		
 		String rowData[] = new String[length];
 		
+		//결과 데이터를 String 형 배열 객체에 쓴다.
 		for(int i=0; i<length; i++){
 			
 			try{
@@ -68,12 +64,13 @@ public class FileManagement {
 		
 		String head = "가로 크기,세로 크기,소요 시간,딱정 벌레 수,딜레이";
 		
-		
+		//파일을 쓴다.
 		BufferedWriter writer;
 		
 		try {
 			writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(csvFilePath), "MS949"));
 			
+			//헤드 부분을 쓴다.
 			writer.write(head);
 			writer.newLine();
 			
@@ -90,21 +87,26 @@ public class FileManagement {
 			
 			
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null, "파일 저장 중 오류가 발생하였습니다.", "저장 오류", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null, "파일 저장 중 오류가 발생하였습니다.", "저장 오류", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null, "파일 저장 중 오류가 발생하였습니다.", "저장 오류", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 		}
 		
 		
+		//저장 된 데이터를 확인한다.
 		showResultDialog(csvFilePath);
 		
 	}
 	
+	/**
+	 * 저장 후 결과 Dialog를 보여준다.
+	 * @param savedPath 저장 된 경로 파일
+	 */
 	private void showResultDialog(String savedPath){
 		
 		File file = new File(savedPath);
@@ -131,13 +133,13 @@ public class FileManagement {
 			reader.close();
 			
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null, "저장 된 데이터 확인 중 오류가 발생하였습니다.", "저장 오류", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null, "저장 된 데이터 확인 중 오류가 발생하였습니다.", "저장 오류", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null, "저장 된 데이터 확인 중 오류가 발생하였습니다.", "저장 오류", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 		}
 		

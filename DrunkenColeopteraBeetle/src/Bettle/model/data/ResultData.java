@@ -14,7 +14,7 @@ public class ResultData{
 	private int dataCount = 0;
 	
 	public ResultData() {
-		dataModels = new ResultDataModel[100];
+		dataModels = new ResultDataModel[50];
 	}
 
 	/**
@@ -28,7 +28,23 @@ public class ResultData{
 	 */
 	public void saveData(int width, int height, long time, int count, int delay){
 		
-		dataModels[dataCount] = new ResultDataModel(width, height, time, count, delay);
+		try{
+			dataModels[dataCount] = new ResultDataModel(width, height, time, count, delay);
+			
+		}catch (ArrayIndexOutOfBoundsException e){
+			// 최대 크기를 넘는 결과 데이터를 저장 할 경우
+			
+			ResultDataModel[] tmpDataModels = dataModels;
+			
+			dataModels = new ResultDataModel[dataCount + 50];
+			
+			for(int i=0; i<dataCount; i++){
+				dataModels[i] = tmpDataModels[i];
+			}
+			
+			dataModels[dataCount] = new ResultDataModel(width, height, time, count, delay);
+			
+		}
 		
 		dataCount++;
 		

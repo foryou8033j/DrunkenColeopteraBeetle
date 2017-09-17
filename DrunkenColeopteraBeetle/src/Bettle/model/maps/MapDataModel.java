@@ -34,6 +34,7 @@ public class MapDataModel {
 			visitCells = new boolean[width+1][height+1];
 		}catch (OutOfMemoryError e) {
 			JOptionPane.showConfirmDialog(null, "힙 메모리 초과!");
+			System.exit(1);
 		}
 		
 	}
@@ -101,6 +102,12 @@ public class MapDataModel {
 		return height;
 	}
 	
+	/**
+	 * 주어진 좌표값이 현재 {@link MapDataModel} 에 포함되어 있는지 확인한다.
+	 * @param x 좌표
+	 * @param y 좌표
+	 * @return {@link boolean}
+	 */
 	public boolean isInThisMap(int x, int y) {
 		
 		if(x >= this.x && x < this.x + width) {

@@ -20,32 +20,24 @@ public class BeetleCordinate{
 	 * @param height {@link int}
 	 */
 	public BeetleCordinate(int width, int height) {
-		
 		//딱정벌레의 초기 좌표를 랜덤하게 지정한다.
 		x = new Random().nextInt(width);
 		y = new Random().nextInt(height);
 	}
 	
 	public void set_X_Plus() {
-		
-
 		x++;
 	}
 	
 	public void set_X_Minus() {
-
 		x--;
 	}
 	
 	public void set_Y_Plus() {
-		
-
 		y++;
 	}
 	
 	public void set_Y_Minus() {
-		
-
 		y--;
 	}
 	

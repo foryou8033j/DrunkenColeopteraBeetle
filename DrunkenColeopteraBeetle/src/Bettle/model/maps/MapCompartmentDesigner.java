@@ -50,6 +50,7 @@ public class MapCompartmentDesigner extends SwingWorker<MapDataModel[][], Object
 		
 		int progress = 1;
 		
+		//규격별로 크기를 자르고 MapDataModel 객체를 생성한다.
 		for(int j=0; j < countY; j++) {
 			for(int i=0; i < countX; i++) {
 				models[i][j] = new MapDataModel(i * DRAW_MAP_SIZE, j * DRAW_MAP_SIZE, DRAW_MAP_SIZE, DRAW_MAP_SIZE);

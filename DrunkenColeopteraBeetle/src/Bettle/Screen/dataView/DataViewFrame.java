@@ -44,12 +44,14 @@ public class DataViewFrame extends JFrame {
 	private JTable table;
 	private JButton btnResetData;
 
-	
+	//결과 데이터 클래스와 연동한다.
 	private ResultData resultData = null;
+	
+	//그래프 객체
 	private GraphViewFrame graphFrame = null;
 
 	/**
-	 * Create the frame.
+	 * 레이아웃을 초기화한다.
 	 */
 	public DataViewFrame() {
 		
@@ -73,6 +75,7 @@ public class DataViewFrame extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				//파일 내보내기 버튼 클릭 시 로직
 				
 				//TODO 데이터 없을 경우 저장이 불가능 해야함.
 				if(resultData == null || resultData.getData().length==0 || table.getRowCount()==0){
@@ -80,11 +83,12 @@ public class DataViewFrame extends JFrame {
 					return;
 				}
 					
-				
+				//파일 저장 경로 선택 창을 띄운다.
 				JFileChooser fileChooser = new JFileChooser();
 				fileChooser.setFileFilter(new FileNameExtensionFilter("CSV File(*.csv)", "csv"));
 				fileChooser.showSaveDialog(null);
 				
+				//경로 선택이 끝난 경우 파일을 저장한다.
 				if(fileChooser.getSelectedFile() != null)
 					new FileManagement().generateFile(fileChooser.getSelectedFile(), resultData);
 				
@@ -99,6 +103,8 @@ public class DataViewFrame extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				//그래프 보기 버튼 클릭 시 로직
+				
 				graphFrame = new GraphViewFrame(resultData);
 				graphFrame.setLocationRelativeTo(rootPane);
 				graphFrame.setSize(800, 400);
@@ -111,7 +117,9 @@ public class DataViewFrame extends JFrame {
 		btnResetData = new JButton("데이터 삭제");
 		btnResetData.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				//데이터 삭제 버튼 관련 로직
 				
+				//사용자에게 한번 더 묻는다.
 				int response = JOptionPane.showConfirmDialog(rootPane, "<html>데이터를 삭제하면 되돌릴 수 없습니다.<br>"
 						+ "그래도 삭제 하시겠습니까?", "경고", JOptionPane.YES_NO_OPTION);
 				
