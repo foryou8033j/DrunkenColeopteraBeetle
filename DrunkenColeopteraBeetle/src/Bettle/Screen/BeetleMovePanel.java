@@ -25,9 +25,6 @@ import Bettle.model.maps.MapData;
 import Bettle.model.maps.MapDataModel;
 
 
-enum DIRECTION {LEFT, RIGHT, UP, DOWN};
-
-
 /**
  * 딱정벌레 이동 경로 표시 그래픽 클래스
  * @author Jeongsam
