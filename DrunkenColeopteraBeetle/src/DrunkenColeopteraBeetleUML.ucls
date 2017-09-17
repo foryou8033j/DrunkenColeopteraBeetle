@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.1" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="Bettle.model.maps.MapDataModel" project="DrunkenColeopteraBeetle" 
+    file="/DrunkenColeopteraBeetle/src/Bettle/model/maps/MapDataModel.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="297" width="173" x="605" y="1180"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="Bettle.model.maps.MapCompartmentDesigner" project="DrunkenColeopteraBeetle" 
+    file="/DrunkenColeopteraBeetle/src/Bettle/model/maps/MapCompartmentDesigner.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="240" x="56" y="-106"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="Beetle.ColeopteraBeetle" project="DrunkenColeopteraBeetle" 
+    file="/DrunkenColeopteraBeetle/src/Beetle/ColeopteraBeetle.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="122" x="336" y="-106"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="Bettle.model.data.ResultData" project="DrunkenColeopteraBeetle" 
+    file="/DrunkenColeopteraBeetle/src/Bettle/model/data/ResultData.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="179" x="1191" y="2654"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="Bettle.Screen.Controller.ControlPanel" project="DrunkenColeopteraBeetle" 
+    file="/DrunkenColeopteraBeetle/src/Bettle/Screen/Controller/ControlPanel.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="495" width="251" x="940" y="1517"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="Bettle.Util.NumberChecker" project="DrunkenColeopteraBeetle" 
+    file="/DrunkenColeopteraBeetle/src/Bettle/Util/NumberChecker.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="133" x="498" y="-106"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="Bettle.model.data.ResultDataModel" project="DrunkenColeopteraBeetle" 
+    file="/DrunkenColeopteraBeetle/src/Bettle/model/data/ResultDataModel.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="261" width="190" x="1191" y="2865"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="Bettle.model.bettle.Beetle" project="DrunkenColeopteraBeetle" 
+    file="/DrunkenColeopteraBeetle/src/Bettle/model/bettle/Beetle.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="333" width="143" x="1317" y="807"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="Bettle.Screen.Graph.GraphViewFrame" project="DrunkenColeopteraBeetle" 
+    file="/DrunkenColeopteraBeetle/src/Bettle/Screen/Graph/GraphViewFrame.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="279" width="226" x="944" y="2335"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="Bettle.Screen.BeetleMovePanel" project="DrunkenColeopteraBeetle" 
+    file="/DrunkenColeopteraBeetle/src/Bettle/Screen/BeetleMovePanel.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="873" width="224" x="1057" y="-106"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="Bettle.Screen.dataView.DataViewFrame" project="DrunkenColeopteraBeetle" 
+    file="/DrunkenColeopteraBeetle/src/Bettle/Screen/dataView/DataViewFrame.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="243" width="171" x="1020" y="2052"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="12" language="java" name="Bettle.model.bettle.Beetle.Pos" project="DrunkenColeopteraBeetle" 
+    file="/DrunkenColeopteraBeetle/src/Bettle/model/bettle/Beetle.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="119" x="1317" y="1180"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="13" language="java" name="Bettle.File.FileManagement" project="DrunkenColeopteraBeetle" 
+    file="/DrunkenColeopteraBeetle/src/Bettle/File/FileManagement.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="187" x="830" y="-106"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="Bettle.model.bettle.BeetleCordinate" project="DrunkenColeopteraBeetle" 
+    file="/DrunkenColeopteraBeetle/src/Bettle/model/bettle/BeetleCordinate.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="279" width="143" x="1321" y="-106"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="Bettle.model.maps.MapData" project="DrunkenColeopteraBeetle" 
+    file="/DrunkenColeopteraBeetle/src/Bettle/model/maps/MapData.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="261" width="188" x="848" y="807"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="Bettle.Util.Dialog.ProgressbarDialog" project="DrunkenColeopteraBeetle" 
+    file="/DrunkenColeopteraBeetle/src/Bettle/Util/Dialog/ProgressbarDialog.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="225" width="220" x="818" y="1180"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="Bettle.Screen.RootFrame" project="DrunkenColeopteraBeetle" 
+    file="/DrunkenColeopteraBeetle/src/Bettle/Screen/RootFrame.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="225" width="199" x="1078" y="1180"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="18">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="19" name="model"/>      
+      <multiplicity id="20" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="21">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="22" name="models"/>      
+      <multiplicity id="23" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="24">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="12"/>  
+  </nesting>  
+  <association id="25">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="26" name="dataViewFrame"/>      
+      <multiplicity id="27" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="28">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="29" name="dialog"/>      
+      <multiplicity id="30" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="31">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="32" name="frame"/>      
+      <multiplicity id="33" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="34">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="14"/>  
+  </generalization>  
+  <association id="35">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="36" name="frame"/>      
+      <multiplicity id="37" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="38">    
+    <bendpoint x="1200" y="2335"/>    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="39" name="resultData"/>      
+      <multiplicity id="40" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="41">    
+    <bendpoint x="1087" y="807"/>    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="42" name="screen"/>      
+      <multiplicity id="43" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="44">    
+    <bendpoint x="1221" y="1517"/>    
+    <bendpoint x="1221" y="2052"/>    
+    <bendpoint x="1221" y="2335"/>    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="45" name="data"/>      
+      <multiplicity id="46" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="47">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="48" name="mapData"/>      
+      <multiplicity id="49" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="50">    
+    <bendpoint x="1066" y="807"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="51" name="frame"/>      
+      <multiplicity id="52" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="53">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="54" name="graphFrame"/>      
+      <multiplicity id="55" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="56">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="57" name="resultData"/>      
+      <multiplicity id="58" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="59">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="60" name="controller"/>      
+      <multiplicity id="61" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="62">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="63" name="beetles"/>      
+      <multiplicity id="64" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
