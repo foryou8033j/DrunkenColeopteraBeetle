@@ -81,11 +81,8 @@ public class Beetle extends BeetleCordinate {
 	 */
 	public void makeDirection() {
 		
-		//시드 값을 랜덤으로 준다
-		int seed = new Random().nextInt(46);
-		
 		//랜덤한 8가지 값을 반환받는다.
-		int randNum = new Random(seed).nextInt(8);
+		int randNum = new Random().nextInt(8);
 		
 		switch(randNum) {
 		case 0:
