@@ -15,8 +15,6 @@ public class ResultDataModel {
 	private int beetleCount;
 	private int delay;
 	
-	
-	
 	/**
 	 * 결과 데이터 정보를 저장한다.
 	 * @param time {@link long}

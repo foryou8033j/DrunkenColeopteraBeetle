@@ -20,7 +20,7 @@ public class Beetle extends BeetleCordinate {
 	private boolean leftDirection;
 	private boolean rightDirection;
 	
-	//셀 관련
+	//한 딱정벌레의 이동 횟수 저장
 	private int beetleMoveCount;
 	
 	//보드 크기 정보
@@ -45,8 +45,6 @@ public class Beetle extends BeetleCordinate {
 		this.B_WIDTH = mapWidth;
 		this.B_HEIGHT = mapHeight;
 
-		
-		
 		beetleMoveCount = 0;
 		
 		//초기 딱정벌레의 방향을 지정한다.
@@ -83,8 +81,11 @@ public class Beetle extends BeetleCordinate {
 	 */
 	public void makeDirection() {
 		
-		//여기에 랜덤 알고리즘이 적용 되어야한다.
-		int randNum = new Random().nextInt(8);
+		//시드 값을 랜덤으로 준다
+		int seed = new Random().nextInt(46);
+		
+		//랜덤한 8가지 값을 반환받는다.
+		int randNum = new Random(seed).nextInt(8);
 		
 		switch(randNum) {
 		case 0:

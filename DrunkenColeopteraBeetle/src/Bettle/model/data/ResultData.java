@@ -9,12 +9,12 @@ package Bettle.model.data;
  */
 public class ResultData{
 	
-	private ResultDataModel[] model = null;
+	private ResultDataModel[] dataModels = null;
 	
 	private int dataCount = 0;
 	
 	public ResultData() {
-		model = new ResultDataModel[100];
+		dataModels = new ResultDataModel[100];
 	}
 
 	/**
@@ -28,7 +28,7 @@ public class ResultData{
 	 */
 	public void saveData(int width, int height, long time, int count, int delay){
 		
-		model[dataCount] = new ResultDataModel(width, height, time, count, delay);
+		dataModels[dataCount] = new ResultDataModel(width, height, time, count, delay);
 		
 		dataCount++;
 		
@@ -39,7 +39,7 @@ public class ResultData{
 	 * @return {@link ResultDataModel}
 	 */
 	public ResultDataModel[] getData(){
-		return model;
+		return dataModels;
 	}
 	
 	/**
@@ -54,7 +54,7 @@ public class ResultData{
 	 * 데이터 초기화
 	 */
 	public void resetData(){
-		model = new ResultDataModel[100];
+		dataModels = new ResultDataModel[100];
 		dataCount=0;
 	}
 	

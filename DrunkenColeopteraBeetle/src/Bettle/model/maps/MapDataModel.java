@@ -11,11 +11,15 @@ import javax.swing.JOptionPane;
  */
 public class MapDataModel {
 
+	//분리되어진 맵의 시작 좌표 값
 	private int x;
 	private int y;
+	
+	//분리되어진 맵의 크기
 	private int width;
 	private int height;
 	
+	//방문 셀 정보 저장
 	private boolean visitCells[][];
 	
 	public MapDataModel(int x, int y, int width, int height) {
@@ -31,8 +35,6 @@ public class MapDataModel {
 		}catch (OutOfMemoryError e) {
 			JOptionPane.showConfirmDialog(null, "힙 메모리 초과!");
 		}
-		
-		
 		
 	}
 	

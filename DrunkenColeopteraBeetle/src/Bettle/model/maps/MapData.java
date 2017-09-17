@@ -12,14 +12,16 @@ import Bettle.Screen.RootFrame;
 import Bettle.Util.Dialog.ProgressbarDialog;
 
 /**
- * 분리 되어진 각 맵의 데이터 저장 클래스
+ * 맵 전체 데이터 관리 클래스
  * @author Jeongsam
  *
  */
 public class MapData {
 	
+	//방문하지 않은 셀의 갯수를 저장한다.
 	private int countOfNoVisitCells;
 	
+	//맵 세부 데이터 저장 객체 선언
 	private MapDataModel models[][];
 	
 	private final int B_WIDTH;
@@ -34,6 +36,7 @@ public class MapData {
 		B_WIDTH = mapWidth;
 		B_HEIGHT = mapHeight;
 		
+		//프레임와 연동한다.
 		this.frame = frame;
 		
 		//방문 하지 않은 셀의 초기값을 설정한다.
