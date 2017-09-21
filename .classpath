@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="DrunkenColeopteraBeetle/src"/>
+	<classpathentry exported="true" kind="lib" path="DrunkenColeopteraBeetle/jFreeChart/hamcrest-core-1.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="DrunkenColeopteraBeetle/jFreeChart/jcommon-1.0.23.jar"/>
+	<classpathentry exported="true" kind="lib" path="DrunkenColeopteraBeetle/jFreeChart/jfreechart-1.0.19-experimental.jar"/>
+	<classpathentry exported="true" kind="lib" path="DrunkenColeopteraBeetle/jFreeChart/jfreechart-1.0.19-swt.jar"/>
+	<classpathentry exported="true" kind="lib" path="DrunkenColeopteraBeetle/jFreeChart/jfreechart-1.0.19.jar"/>
+	<classpathentry exported="true" kind="lib" path="DrunkenColeopteraBeetle/jFreeChart/jfreesvg-2.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="DrunkenColeopteraBeetle/jFreeChart/junit-4.11.jar"/>
+	<classpathentry exported="true" kind="lib" path="DrunkenColeopteraBeetle/jFreeChart/orsoncharts-1.4-eval-nofx.jar"/>
+	<classpathentry exported="true" kind="lib" path="DrunkenColeopteraBeetle/jFreeChart/orsonpdf-1.6-eval.jar"/>
+	<classpathentry exported="true" kind="lib" path="DrunkenColeopteraBeetle/jFreeChart/servlet.jar"/>
+	<classpathentry exported="true" kind="lib" path="DrunkenColeopteraBeetle/jFreeChart/swtgraphics2d.jar"/>
+	<classpathentry exported="true" kind="lib" path="DrunkenColeopteraBeetle/common-lang/commons-lang-2.3.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
